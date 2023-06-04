@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:TodoApp.Model"
+             xmlns:viewmodel="clr-namespace:TodoApp.ViewModel"
+             x:Class="TodoApp.MainPage"
+             x:DataType="viewmodel:MainPageViewModel"
+             Title="Todos">
+    <!--xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"-->
+    <!--toolkit:SetFocusOnEntryCompletedBehavior.NextElement="{x:Reference btnAdd}"-->
+    
+    <StackLayout BackgroundColor="#151515" x:Name="stacklayout">
+        <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding UnFocusCommand}" CommandParameter="{Binding Source={x:Reference stacklayout}}"/>
+        </StackLayout.GestureRecognizers>
+        <Grid ColumnDefinitions="70*, 30*" Padding="10" ColumnSpacing="5" HeightRequest="80">
+            <Border Margin="-2.3" Grid.Column="0" Padding="0" BackgroundColor="Transparent" StrokeShape="RoundRectangle 8" StrokeThickness="2" Stroke="{StaticResource Primary}">
+                <Entry x:Name="entry" Placeholder="Add Todo" PlaceholderColor="Gray" TextColor="White" Margin="10" BackgroundColor="Transparent"/>
+            </Border>
+            <Button x:Name="btnAdd" Grid.Column="1" Text="Add" Command="{Binding AddTodoCommand}" CommandParameter="{Binding Source={x:Reference entry}}" FontAttributes="Bold" TextTransform="Uppercase" FontSize="18">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup>
+                        <VisualState x:Name="Pressed">
+                            <VisualState.Setters>
+                                <Setter TargetName="entry" Property="Entry.BackgroundColor" Value="Lime"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </Button>
+        </Grid>
+        <Label Text="{Binding Label}" TextColor="White" IsVisible="False"/>
+        <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView ItemsSource="{Binding Todos}" BackgroundColor="#151515" VerticalOptions="StartAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Todo">
+                        <StackLayout Padding="6">
+                            <Frame x:Name="frame" BackgroundColor="#222222" CornerRadius="12" BorderColor="#222222" Padding="0">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=FrameCommand}" CommandParameter="{Binding Source={x:Reference checkBox}}"/>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=UpdateBoolCommand}" CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
+                                <StackLayout Orientation="Horizontal" Padding="0">
+                                    <StackLayout Orientation="Horizontal" Padding="18">
+                                        <CheckBox IsChecked="{Binding IsDone, Mode=TwoWay}"
+                                        Color="White" x:Name="checkBox" />
+                                        <Label Text="{Binding Title}" TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    </StackLayout>
+                                    <Button x:Name="btnDelete" Text="DELETE" TextColor="White" BackgroundColor="{StaticResource Green}" BorderWidth="0" FontAttributes="Bold"
+                                    IsVisible="{Binding IsChecked, Source={x:Reference checkBox}}"
+                                    CornerRadius="0" HorizontalOptions="EndAndExpand"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=DeleteCommand}"
+                                    CommandParameter="{Binding .}"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </StackLayout>
+</ContentPage>

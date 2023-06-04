@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:handler="clr-namespace:TodoApp.Handler"
+             x:Class="TodoApp.CustomControls.OutlinedEntryControl"
+      x:Name="this">
+    <Border Grid.Row="0" StrokeShape="RoundRectangle 12" Padding="10,2,10,2" Stroke="{StaticResource Primary}" BackgroundColor="Transparent" StrokeThickness="2">
+        <handler:BorderlessEntry x:Name="txtEntry" 
+               Focused="txtEntry_Focused" 
+               Unfocused="txtEntry_Unfocused"
+               Text="{Binding Source={x:Reference this},Path=Text}"  />
+    </Border>
+
+    <Label Grid.Row="0" 
+           FontSize="18"
+           x:Name="lblPlaceholder"
+           Margin="15,0,10,0"
+           TextColor="Gray"
+           Text="{Binding Source={x:Reference this},Path=Placeholder}"
+           BackgroundColor="{Binding Source={x:Reference this}, Path=TitleBackgroundColor}"
+           HorizontalOptions="StartAndExpand"
+           VerticalOptions="CenterAndExpand"
+           />
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+    </Grid.GestureRecognizers>
+</Grid>
