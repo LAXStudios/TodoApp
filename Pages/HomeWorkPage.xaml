@@ -20,7 +20,14 @@
                                     <CheckBox IsChecked="{Binding IsDone, Mode=TwoWay}"
                                         Color="White" x:Name="checkBox" />
                                     <StackLayout Margin="0, 0, 0, 0">
-                                        <Label Text="{Binding Subject}" FontSize="20" TextColor="White" VerticalTextAlignment="Center" />
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=DetailCommand}" CommandParameter="{Binding .}"/>
+                                        </StackLayout.GestureRecognizers>
+                                        <Label Text="{Binding Subject}" FontSize="20" TextColor="White" VerticalTextAlignment="Center">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=DetailCommand}" CommandParameter="{Binding .}"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
                                         <Label Text="{Binding HomeWorkDate, StringFormat='Till Date: {0}'}" FontSize="10" TextColor="{StaticResource Gray300}"/>
                                         <StackLayout Orientation="Horizontal" Spacing="8">
                                             <Label Text="{Binding Combine}" FontSize="10" TextColor="{StaticResource Gray300}"/>

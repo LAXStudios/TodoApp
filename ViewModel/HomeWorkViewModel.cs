@@ -6,6 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TodoApp.Pages;
+using CommunityToolkit.Maui.Views;
+using Mopups.Services;
+using TodoApp.PopUps;
+using TodoApp.Model;
 
 namespace TodoApp.ViewModel
 {
@@ -65,5 +69,10 @@ namespace TodoApp.ViewModel
             HomeWorkList = resuslt;
         }
 
+        [RelayCommand]
+        async Task Detail(HomeWork homeWork)
+        {
+            await MopupService.Instance.PushAsync(new DetailHomeWorkPopUp());
+        }
     }
 }

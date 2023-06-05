@@ -97,7 +97,7 @@ namespace TodoApp.ViewModel
         [RelayCommand]
         public async Task CreateUnderList()
         {
-            Label = "Dobble";
+            Label = "Double";
         }
     }
 }

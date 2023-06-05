@@ -9,7 +9,7 @@
              Shell.NavBarIsVisible="False"
              Shell.TabBarIsVisible="False"
              x:DataType="viewmodel:NewHomeWorkViewModel">
-    <Grid Padding="0">
+    <Grid Padding="0" BackgroundColor="{StaticResource Black}">
         <Border Padding="10" VerticalOptions="StartAndExpand" Margin="-1" StrokeShape="RoundRectangle 0, 0, 24 ,24" StrokeThickness="0" BackgroundColor="{StaticResource Primary}" HeightRequest="200">
             <Grid>
                 <ImageButton Source="cross.svg" WidthRequest="70" HorizontalOptions="EndAndExpand" Margin="0,0,0,135" Command="{Binding BackCommand}"/>

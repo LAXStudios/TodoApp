@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mopup:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mopup="clr-namespace:Mopups.Pages;assembly=Mopups"
+             x:Class="TodoApp.PopUps.DetailHomeWorkPopUp"
+             Title="DetailHomeWorkPopUp" CloseWhenBackgroundIsClicked="True" BackgroundColor="#80000000">
+    <StackLayout BackgroundColor="{StaticResource Secondary}" HeightRequest="350" WidthRequest="250" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Label 
+            Text="DetailsPopUp"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </StackLayout>
+</mopup:PopupPage>
