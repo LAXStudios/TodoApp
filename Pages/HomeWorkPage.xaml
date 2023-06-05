@@ -4,7 +4,7 @@
              xmlns:viewmodel="clr-namespace:TodoApp.ViewModel"
              xmlns:model="clr-namespace:TodoApp.Model"
              x:Class="TodoApp.Pages.HomeWorkPage"
-             Title="Homework"
+             Title="Hausaufgaben"
              x:DataType="viewmodel:HomeWorkViewModel">
     <Grid Padding="10" Style="{DynamicResource 15Stack}">
         <CollectionView ItemsSource="{Binding HomeWorkList}">
@@ -15,25 +15,24 @@
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=FrameCommand}" CommandParameter="{Binding Source={x:Reference checkBox}}"/>
                             </Frame.GestureRecognizers>
-                            <StackLayout Orientation="Horizontal" Padding="0">
-                                <StackLayout Orientation="Horizontal" Padding="18">
+                            <Grid ColumnDefinitions="70*, 30*" Padding="0">
+                                <StackLayout Grid.Column="0" Orientation="Horizontal" Padding="18">
                                     <CheckBox IsChecked="{Binding IsDone, Mode=TwoWay}"
                                         Color="White" x:Name="checkBox" />
                                     <StackLayout Margin="0, 0, 0, 0">
                                         <Label Text="{Binding Subject}" FontSize="20" TextColor="White" VerticalTextAlignment="Center" />
+                                        <Label Text="{Binding HomeWorkDate, StringFormat='Till Date: {0}'}" FontSize="10" TextColor="{StaticResource Gray300}"/>
                                         <StackLayout Orientation="Horizontal" Spacing="8">
-                                            <Label Text="{Binding HomeWorkPage, StringFormat='P. {0}'}" FontSize="10" TextColor="{StaticResource Gray300}"/>
-                                            <Label Text="{Binding HomeWorkNumber, StringFormat='Nr. {0}'}" FontSize="10" TextColor="{StaticResource Gray300}"/>
-                                            <Label Text="{Binding HomeWorkDate, StringFormat='Till Date: {0}'}" FontSize="10" TextColor="{StaticResource Gray300}"/>
+                                            <Label Text="{Binding Combine}" FontSize="10" TextColor="{StaticResource Gray300}"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>
-                                <Button x:Name="btnDelete" Text="DELETE" TextColor="White" BackgroundColor="{StaticResource Green}"  MinimumWidthRequest="150"
+                                <Button Grid.Column="1" x:Name="btnDelete" Text="Enternen" TextColor="White" BackgroundColor="{StaticResource Green}"  MinimumWidthRequest="150"
                                     IsVisible="{Binding IsChecked, Source={x:Reference checkBox}}"
                                     CornerRadius="0" HorizontalOptions="EndAndExpand"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=DeleteCommand}"
                                     CommandParameter="{Binding .}"/>
-                            </StackLayout>
+                            </Grid>
                         </Frame>
                     </StackLayout>
                 </DataTemplate>

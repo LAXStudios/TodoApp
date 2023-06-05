@@ -11,7 +11,7 @@
              x:DataType="viewmodel:NewHomeWorkViewModel">
     <Grid Padding="0">
         <Border VerticalOptions="StartAndExpand" Margin="-1" StrokeShape="RoundRectangle 0, 0, 24 ,24" StrokeThickness="0" BackgroundColor="{StaticResource Primary}" HeightRequest="200">
-            <Label Text="New Homework" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="40" FontAttributes="Bold"/>
+            <Label Text="Neue Hausaufgabe" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="40" FontAttributes="Bold"/>
         </Border>
         <Grid Padding="10, 10, 10 ,50">
             <StackLayout WidthRequest="350" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
@@ -28,8 +28,8 @@
                     </Picker.ItemsSource>
                 </Picker>
                 <Grid ColumnDefinitions="*, *" VerticalOptions="CenterAndExpand">
-                    <custom:OutlinedEntryControl Grid.Column="0" Text="{Binding PageString}" HeightRequest="50" Placeholder=" Page " TitleBackgroundColor="{StaticResource Black}"/>
-                    <custom:OutlinedEntryControl Grid.Column="1" Text="{Binding NumberString}" HeightRequest="50" Placeholder=" Number " TitleBackgroundColor="{StaticResource Black}"/>
+                    <custom:OutlinedEntryControl Grid.Column="0" Text="{Binding PageString}" HeightRequest="50" Placeholder=" Page " TitleBackgroundColor="{StaticResource Black}" KeyBoard="Numeric"/>
+                    <custom:OutlinedEntryControl Grid.Column="1" Text="{Binding NumberString}" HeightRequest="50" Placeholder=" Number " TitleBackgroundColor="{StaticResource Black}" KeyBoard="Numeric"/>
                 </Grid>
                 <Grid ColumnDefinitions="70*, 30*" VerticalOptions="CenterAndExpand">
                     <custom:OutlinedEntryControl Grid.Column="0" Text="{Binding DescriptionString}" HeightRequest="50" Placeholder=" Description " TitleBackgroundColor="{StaticResource Black}"/>

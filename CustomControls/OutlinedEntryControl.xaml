@@ -8,7 +8,7 @@
         <handler:BorderlessEntry x:Name="txtEntry" 
                Focused="txtEntry_Focused" 
                Unfocused="txtEntry_Unfocused"
-               Text="{Binding Source={x:Reference this},Path=Text}"  />
+               Text="{Binding Source={x:Reference this},Path=Text}" Keyboard="{Binding Source={x:Reference this}, Path=KeyBoard}"  />
     </Border>
 
     <Label Grid.Row="0" 

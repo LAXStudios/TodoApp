@@ -21,6 +21,13 @@ public partial class OutlinedEntryControl : Grid
         defaultValue: Colors.Transparent,
         defaultBindingMode: BindingMode.TwoWay);
 
+    public static readonly BindableProperty KeyBoardProperty = BindableProperty.Create(
+        propertyName: nameof(KeyBoard),
+        returnType: typeof(Keyboard),
+        declaringType: typeof(OutlinedEntryControl),
+        defaultValue: Keyboard.Default,
+        defaultBindingMode: BindingMode.TwoWay);
+
     public string Text
     {
         get => (string)GetValue(TextProperty);
@@ -31,6 +38,12 @@ public partial class OutlinedEntryControl : Grid
     {
         get => (Color)GetValue(TitleBackgroundColorProperty);
         set { SetValue(TitleBackgroundColorProperty, value); }
+    }
+
+    public Keyboard KeyBoard
+    {
+        get => (Keyboard)GetValue(KeyBoardProperty);
+        set { SetValue(KeyBoardProperty, value); }
     }
 
     public static readonly BindableProperty PlaceholderProperty = BindableProperty.Create(

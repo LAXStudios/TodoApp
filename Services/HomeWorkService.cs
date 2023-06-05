@@ -20,9 +20,16 @@ namespace TodoApp.Services
             collection.EnsureIndex(x => x.Id);
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            using var db = new LiteDatabase(GetConnectionString());
+            var homeworks = db.GetCollection<Todo>("homeworks");
+            homeworks.EnsureIndex(x => x.Id);
+            var itemToDelete = homeworks.FindOne(x => x.Id == id);
+            if (itemToDelete != null)
+            {
+                homeworks.Delete(itemToDelete.Id);
+            }
         }
 
         public Task GetHomeWork(int id)

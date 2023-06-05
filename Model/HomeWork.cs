@@ -28,7 +28,7 @@ namespace TodoApp.Model
 
         public string HomeWorkPage { get; set; }
         public string HomeWorkNumber { get; set; }
-
+        public string Combine { get; set; }
         public string Description { get; set; }
 
         public bool IsDone { get; set; }

@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Maui.Converters;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,14 +19,14 @@ namespace TodoApp.ViewModel
         public HomeWorkViewModel(IHomeWorkService homeWorkService)
         {
             homeWorkList = new List<HomeWork>();
-            //HomeWorkList.Add(new HomeWork { HomeWorkPage = "30", HomeWorkNumber = "3", HomeWorkDate = DateTime.Today, Subject = HomeWork.TypeSubject.Math.ToString() });
             _homeWorkService = homeWorkService;
         }
 
         [RelayCommand]
         async Task Delete(HomeWork homeWork)
         {
-
+            await _homeWorkService.Delete(homeWork.Id);
+            await LoadData();
         }
 
         [RelayCommand]
@@ -37,6 +38,30 @@ namespace TodoApp.ViewModel
         public async Task LoadData()
         {
             List<HomeWork> resuslt = await _homeWorkService.GetAllHomeWork();
+            foreach (var item in resuslt)
+            {
+                string page = string.Empty;
+                string number = string.Empty;
+                if(item.HomeWorkPage != null)
+                {
+                    page = $"S.{item.HomeWorkPage}";
+                }
+                if(item.HomeWorkNumber != null)
+                {
+                    number = $"Nr.{item.HomeWorkNumber}";
+                }
+                //string page = item.HomeWorkPage == string.Empty ? string.Empty : $"S. {item.HomeWorkPage}";
+                //string number = item.HomeWorkNumber == string.Empty ? string.Empty : $"Nr. {item.HomeWorkNumber}";
+                if(page != string.Empty)
+                {
+                    item.Combine = page + " " + number;
+                }
+                else
+                {
+                    item.Combine = number;
+                }
+                
+            }
             HomeWorkList = resuslt;
         }
     }

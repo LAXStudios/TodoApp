@@ -47,5 +47,7 @@ namespace TodoApp.ViewModel
             await _homeWorkService.Add(homeWork);
             await Shell.Current.GoToAsync("..");
         }
+
+
     }
 }
