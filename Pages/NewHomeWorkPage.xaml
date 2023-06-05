@@ -10,36 +10,38 @@
              Shell.TabBarIsVisible="False"
              x:DataType="viewmodel:NewHomeWorkViewModel">
     <Grid Padding="0">
-        <Border VerticalOptions="StartAndExpand" Margin="-1" StrokeShape="RoundRectangle 0, 0, 24 ,24" StrokeThickness="0" BackgroundColor="{StaticResource Primary}" HeightRequest="200">
-            <Label Text="Neue Hausaufgabe" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="40" FontAttributes="Bold"/>
+        <Border Padding="10" VerticalOptions="StartAndExpand" Margin="-1" StrokeShape="RoundRectangle 0, 0, 24 ,24" StrokeThickness="0" BackgroundColor="{StaticResource Primary}" HeightRequest="200">
+            <Label Text="Neue Hausaufgabe" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="35" FontAttributes="Bold"/>
         </Border>
         <Grid Padding="10, 10, 10 ,50">
             <StackLayout WidthRequest="350" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
-                <Picker x:Name="picker" Title="Select Subject" SelectedItem="{Binding Selected}">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Math</x:String>
-                            <x:String>German</x:String>
-                            <x:String>French</x:String>
-                            <x:String>Philosphy</x:String>
-                            <x:String>Art</x:String>
-                            <x:String>Informatic</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+                <Border Padding="10,0,10,0">
+                    <Picker x:Name="picker" Title="Wähle Fach" SelectedItem="{Binding Selected}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Mathe</x:String>
+                                <x:String>Deutsch</x:String>
+                                <x:String>Französisch</x:String>
+                                <x:String>Philosophie</x:String>
+                                <x:String>Kunst</x:String>
+                                <x:String>Informatik</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Border>
                 <Grid ColumnDefinitions="*, *" VerticalOptions="CenterAndExpand">
-                    <custom:OutlinedEntryControl Grid.Column="0" Text="{Binding PageString}" HeightRequest="50" Placeholder=" Page " TitleBackgroundColor="{StaticResource Black}" KeyBoard="Numeric"/>
-                    <custom:OutlinedEntryControl Grid.Column="1" Text="{Binding NumberString}" HeightRequest="50" Placeholder=" Number " TitleBackgroundColor="{StaticResource Black}" KeyBoard="Numeric"/>
+                    <custom:OutlinedEntryControl Grid.Column="0" Text="{Binding PageString}" HeightRequest="50" Placeholder=" Seite " TitleBackgroundColor="{StaticResource Black}" KeyBoard="Numeric"/>
+                    <custom:OutlinedEntryControl Grid.Column="1" Text="{Binding NumberString}" HeightRequest="50" Placeholder=" Nummer " TitleBackgroundColor="{StaticResource Black}" KeyBoard="Numeric"/>
                 </Grid>
                 <Grid ColumnDefinitions="70*, 30*" VerticalOptions="CenterAndExpand">
-                    <custom:OutlinedEntryControl Grid.Column="0" Text="{Binding DescriptionString}" HeightRequest="50" Placeholder=" Description " TitleBackgroundColor="{StaticResource Black}"/>
+                    <custom:OutlinedEntryControl Grid.Column="0" Text="{Binding DescriptionString}" HeightRequest="50" Placeholder=" Beschreibung " TitleBackgroundColor="{StaticResource Black}"/>
                     <Border Grid.Column="1">
                         <DatePicker Format="dd/MM/yyyy" MinimumDate="01/01/2023" MaximumDate="3/12/2025" Date="{Binding CurrentDate}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
                     </Border>
                 </Grid>
             </StackLayout>
 
-            <Button Command="{Binding AddCommand}" Text="Add" VerticalOptions="EndAndExpand" HeightRequest="50" FontAttributes="Bold" FontSize="Title" TextTransform="Uppercase"/>
+            <Button Command="{Binding AddCommand}" Text="Hinzufügen" VerticalOptions="EndAndExpand" HeightRequest="50" FontAttributes="Bold" FontSize="Title" TextTransform="Uppercase"/>
         </Grid>
     </Grid>
 </ContentPage>

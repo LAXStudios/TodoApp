@@ -12,7 +12,7 @@
              Icon="todo.svg">
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
         </Tab>
-        <Tab Title="Homework"
+        <Tab Title="Hausaufgaben"
              Icon="todo.svg">
             <ShellContent ContentTemplate="{DataTemplate pages:HomeWorkPage}"/>
         </Tab>

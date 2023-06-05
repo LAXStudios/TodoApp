@@ -15,9 +15,9 @@
             </StackLayout.GestureRecognizers>
             <Grid ColumnDefinitions="70*, 30*" Padding="10" ColumnSpacing="5" HeightRequest="80">
                 <Border Margin="-2.3" Grid.Column="0" Padding="0" BackgroundColor="Transparent" StrokeShape="RoundRectangle 8" StrokeThickness="2" Stroke="{StaticResource Primary}">
-                    <Entry x:Name="entry" Placeholder="Add Todo" PlaceholderColor="Gray" TextColor="White" Margin="10" BackgroundColor="Transparent"/>
+                    <Entry x:Name="entry" Placeholder="Neues Todo" PlaceholderColor="Gray" TextColor="White" Margin="10" BackgroundColor="Transparent"/>
                 </Border>
-                <Button x:Name="btnAdd" Grid.Column="1" Text="Add" Command="{Binding AddTodoCommand}" CommandParameter="{Binding Source={x:Reference entry}}" FontAttributes="Bold" TextTransform="Uppercase" FontSize="18">
+                <Button x:Name="btnAdd" Grid.Column="1" Text="Neu" Command="{Binding AddTodoCommand}" CommandParameter="{Binding Source={x:Reference entry}}" FontAttributes="Bold" TextTransform="Uppercase" FontSize="18">
                     <VisualStateManager.VisualStateGroups>
                         <VisualStateGroup>
                             <VisualState x:Name="Pressed">
