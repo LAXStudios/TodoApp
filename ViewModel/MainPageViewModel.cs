@@ -30,7 +30,7 @@ namespace TodoApp.ViewModel
         bool showEntry = false;
 
         [ObservableProperty]
-        string label = "Test";
+        string label = "Version: Pre alpha | LAXStudios©";
 
         [ObservableProperty]
         bool isRefreshing = false;
@@ -92,6 +92,12 @@ namespace TodoApp.ViewModel
             {
                 stacklayout.Focus();
             }
+        }
+
+        [RelayCommand]
+        public async Task CreateUnderList()
+        {
+            Label = "Dobble";
         }
     }
 }

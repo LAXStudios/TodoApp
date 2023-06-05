@@ -11,12 +11,15 @@
              x:DataType="viewmodel:NewHomeWorkViewModel">
     <Grid Padding="0">
         <Border Padding="10" VerticalOptions="StartAndExpand" Margin="-1" StrokeShape="RoundRectangle 0, 0, 24 ,24" StrokeThickness="0" BackgroundColor="{StaticResource Primary}" HeightRequest="200">
-            <Label Text="Neue Hausaufgabe" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="35" FontAttributes="Bold"/>
+            <Grid>
+                <ImageButton Source="cross.svg" WidthRequest="70" HorizontalOptions="EndAndExpand" Margin="0,0,0,135" Command="{Binding BackCommand}"/>
+                <Label Text="Neue Hausaufgabe" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="35" FontAttributes="Bold"/>
+            </Grid>
         </Border>
         <Grid Padding="10, 10, 10 ,50">
             <StackLayout WidthRequest="350" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
                 <Border Padding="10,0,10,0">
-                    <Picker x:Name="picker" Title="Wähle Fach" SelectedItem="{Binding Selected}">
+                    <Picker x:Name="picker" Title="Wähle Fach" SelectedItem="{Binding Selected}" TitleColor="{StaticResource Gray300}">
                         <Picker.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
                                 <x:String>Mathe</x:String>

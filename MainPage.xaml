@@ -37,17 +37,22 @@
                             <StackLayout Padding="6">
                                 <Frame x:Name="frame" BackgroundColor="#222222" CornerRadius="12" BorderColor="#222222" Padding="0">
                                     <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=FrameCommand}" CommandParameter="{Binding Source={x:Reference checkBox}}"/>
-                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=UpdateBoolCommand}" CommandParameter="{Binding .}"/>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=FrameCommand}" CommandParameter="{Binding Source={x:Reference checkBox}}" NumberOfTapsRequired="1"/>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=UpdateBoolCommand}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=CreateUnderListCommand}" NumberOfTapsRequired="2"/>
                                     </Frame.GestureRecognizers>
                                     <StackLayout Orientation="Horizontal" Padding="0">
                                         <StackLayout Orientation="Horizontal" Padding="18">
                                             <CheckBox IsChecked="{Binding IsDone, Mode=TwoWay}"
                                         Color="White" x:Name="checkBox" />
                                             <Label Text="{Binding Title}" TextColor="White"
-                                        VerticalTextAlignment="Center" />
+                                        VerticalTextAlignment="Center">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=CreateUnderListCommand}"/>
+                                                </Label.GestureRecognizers>
+                                            </Label>
                                         </StackLayout>
-                                        <Button x:Name="btnDelete" Text="DELETE" TextColor="White" BackgroundColor="{StaticResource Green}" BorderWidth="0" FontAttributes="Bold"
+                                        <Button x:Name="btnDelete" Text="Entfernen" TextColor="White" BackgroundColor="{StaticResource Green}" BorderWidth="0" FontAttributes="Bold"
                                     IsVisible="{Binding IsChecked, Source={x:Reference checkBox}}"
                                     CornerRadius="0" HorizontalOptions="EndAndExpand"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=DeleteCommand}"
@@ -60,6 +65,6 @@
                 </CollectionView>
             </RefreshView>
         </StackLayout>
-        <Label Text="Version: Pre Alpha" BackgroundColor="Black" Opacity="50" VerticalOptions="EndAndExpand"/>
+        <Label Text="{Binding Label}" BackgroundColor="Black" Opacity="50" VerticalOptions="EndAndExpand"/>
     </Grid>
 </ContentPage>

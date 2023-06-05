@@ -13,7 +13,7 @@
                     <StackLayout Padding="6">
                         <Frame x:Name="frame" BackgroundColor="#222222" CornerRadius="12" BorderColor="#222222" Padding="0">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=FrameCommand}" CommandParameter="{Binding Source={x:Reference checkBox}}"/>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=FrameCommand}" CommandParameter="{Binding Source={x:Reference checkBox}}" NumberOfTapsRequired="1"/>
                             </Frame.GestureRecognizers>
                             <Grid ColumnDefinitions="70*, 30*" Padding="0">
                                 <StackLayout Grid.Column="0" Orientation="Horizontal" Padding="18">
