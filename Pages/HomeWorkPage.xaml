@@ -5,46 +5,51 @@
              xmlns:model="clr-namespace:TodoApp.Model"
              x:Class="TodoApp.Pages.HomeWorkPage"
              Title="Hausaufgaben"
-             x:DataType="viewmodel:HomeWorkViewModel">
+             x:DataType="viewmodel:HomeWorkViewModel" Shell.NavBarIsVisible="False">
     <Grid Padding="10" Style="{DynamicResource 15Stack}">
-        <CollectionView ItemsSource="{Binding HomeWorkList}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:HomeWork">
-                    <StackLayout Padding="6">
-                        <Frame x:Name="frame" BackgroundColor="#222222" CornerRadius="12" BorderColor="#222222" Padding="0">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=FrameCommand}" CommandParameter="{Binding Source={x:Reference checkBox}}" NumberOfTapsRequired="1"/>
-                            </Frame.GestureRecognizers>
-                            <Grid ColumnDefinitions="70*, 30*" Padding="0">
-                                <StackLayout Grid.Column="0" Orientation="Horizontal" Padding="18">
-                                    <CheckBox IsChecked="{Binding IsDone, Mode=TwoWay}"
+        <StackLayout>
+            <StackLayout HeightRequest="175">
+                <Label Text="Todos" FontSize="32" VerticalOptions="CenterAndExpand" Padding="10, 0, 0, 0"/>
+            </StackLayout>
+            <CollectionView ItemsSource="{Binding HomeWorkList}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:HomeWork">
+                        <StackLayout Padding="6">
+                            <Frame x:Name="frame" BackgroundColor="#222222" CornerRadius="12" BorderColor="#222222" Padding="0">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=FrameCommand}" CommandParameter="{Binding Source={x:Reference checkBox}}" NumberOfTapsRequired="1"/>
+                                </Frame.GestureRecognizers>
+                                <Grid ColumnDefinitions="70*, 30*" Padding="0">
+                                    <StackLayout Grid.Column="0" Orientation="Horizontal" Padding="18">
+                                        <CheckBox IsChecked="{Binding IsDone, Mode=TwoWay}"
                                         Color="White" x:Name="checkBox" />
-                                    <StackLayout Margin="0, 0, 0, 0">
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=DetailCommand}" CommandParameter="{Binding .}"/>
-                                        </StackLayout.GestureRecognizers>
-                                        <Label Text="{Binding Subject}" FontSize="20" TextColor="White" VerticalTextAlignment="Center">
-                                            <Label.GestureRecognizers>
+                                        <StackLayout Margin="0, 0, 0, 0">
+                                            <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=DetailCommand}" CommandParameter="{Binding .}"/>
-                                            </Label.GestureRecognizers>
-                                        </Label>
-                                        <Label Text="{Binding HomeWorkDate, StringFormat='Till Date: {0}'}" FontSize="10" TextColor="{StaticResource Gray300}"/>
-                                        <StackLayout Orientation="Horizontal" Spacing="8">
-                                            <Label Text="{Binding Combine}" FontSize="10" TextColor="{StaticResource Gray300}"/>
+                                            </StackLayout.GestureRecognizers>
+                                            <Label Text="{Binding Subject}" FontSize="20" TextColor="White" VerticalTextAlignment="Center">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=DetailCommand}" CommandParameter="{Binding .}"/>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Label Text="{Binding HomeWorkDate, StringFormat='Bis zum: {0}'}" FontSize="10" TextColor="{StaticResource Gray300}"/>
+                                            <StackLayout Orientation="Horizontal" Spacing="8">
+                                                <Label Text="{Binding Combine}" FontSize="10" TextColor="{StaticResource Gray300}"/>
+                                            </StackLayout>
                                         </StackLayout>
                                     </StackLayout>
-                                </StackLayout>
-                                <Button Grid.Column="1" x:Name="btnDelete" Text="Enternen" TextColor="White" BackgroundColor="{StaticResource Green}"  MinimumWidthRequest="150"
+                                    <Button Grid.Column="1" x:Name="btnDelete" Text="Enternen" TextColor="White" BackgroundColor="{StaticResource Green}"  MinimumWidthRequest="150"
                                     IsVisible="{Binding IsChecked, Source={x:Reference checkBox}}"
                                     CornerRadius="0" HorizontalOptions="EndAndExpand"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=DeleteCommand}"
                                     CommandParameter="{Binding .}"/>
-                            </Grid>
-                        </Frame>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        <Button Command="{Binding NewCommand}" Text="New" VerticalOptions="EndAndExpand" FontAttributes="Bold" TextTransform="Uppercase" FontSize="18"/>
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+        <Button Command="{Binding NewCommand}" Margin="10" Text="Neu" VerticalOptions="EndAndExpand" FontAttributes="Bold" FontSize="18"/>
     </Grid>
 </ContentPage>

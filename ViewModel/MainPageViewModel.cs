@@ -35,6 +35,8 @@ namespace TodoApp.ViewModel
         [ObservableProperty]
         bool isRefreshing = false;
 
+
+
         public async Task LoadData()
         {
             List<Todo> result = await liteDB.GetAll();
@@ -44,7 +46,6 @@ namespace TodoApp.ViewModel
         [RelayCommand]
         async Task UpdateBool(Todo todo)
         {
-            //todo.IsDone = true;
             await liteDB.Update(todo);
             await LoadData();
         }
@@ -92,6 +93,12 @@ namespace TodoApp.ViewModel
             {
                 stacklayout.Focus();
             }
+        }
+
+        [RelayCommand]
+        async Task LongPress(Entry input)
+        {
+
         }
 
         [RelayCommand]

@@ -36,7 +36,10 @@ namespace TodoApp.ViewModel
         [RelayCommand]
         async Task Add()
         {
-            if(string.IsNullOrWhiteSpace(Selected) || string.IsNullOrEmpty(Selected))
+            DateTime dt = new();
+            dt = CurrentDate;
+            string newCurrentDate = Convert.ToString($"{dt.Day}.{(dt.Month <= 9 ? "0" + dt.Month : dt.Month)}.{dt.Year}");
+            if (string.IsNullOrWhiteSpace(Selected) || string.IsNullOrEmpty(Selected))
             {
                 var toast = Toast.Make("Kein Fach Gewählt", CommunityToolkit.Maui.Core.ToastDuration.Short, 15);
                 await toast.Show();
@@ -50,7 +53,7 @@ namespace TodoApp.ViewModel
                     HomeWorkPage = PageString,
                     HomeWorkNumber = NumberString,
                     Description = DescriptionString,
-                    HomeWorkDate = CurrentDate.ToString(),
+                    HomeWorkDate = newCurrentDate,
                     IsDone = false,
                 };
                 await _homeWorkService.Add(homeWork);

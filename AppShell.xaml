@@ -8,12 +8,10 @@
     Shell.FlyoutBehavior="Disabled">
 
     <TabBar>
-        <Tab Title="Todos"
-             Icon="todo.svg">
+        <Tab Icon="todo.svg">
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
         </Tab>
-        <Tab Title="Hausaufgaben"
-             Icon="todo.svg">
+        <Tab Icon="calendar.svg">
             <ShellContent ContentTemplate="{DataTemplate pages:HomeWorkPage}"/>
         </Tab>
     </TabBar>

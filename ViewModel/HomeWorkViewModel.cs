@@ -64,7 +64,13 @@ namespace TodoApp.ViewModel
                 {
                     item.Combine = number;
                 }
-                
+
+                // Funktioniert zwar, solle man aber besser in die Erstellung Methode packen
+                /*
+                DateTime dt = new DateTime();
+                dt = Convert.ToDateTime(item.HomeWorkDate);
+                item.HomeWorkDate = Convert.ToString($"{dt.Day}.{dt.Month}.{dt.Year}");
+                */
             }
             HomeWorkList = resuslt;
         }
@@ -72,7 +78,8 @@ namespace TodoApp.ViewModel
         [RelayCommand]
         async Task Detail(HomeWork homeWork)
         {
-            await MopupService.Instance.PushAsync(new DetailHomeWorkPopUp());
+            DetailsPopUpViewModel viewModel = new();
+            await MopupService.Instance.PushAsync(new DetailHomeWorkPopUp(viewModel, homeWork));
         }
     }
 }

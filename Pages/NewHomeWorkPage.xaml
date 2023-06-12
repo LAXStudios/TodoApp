@@ -9,14 +9,12 @@
              Shell.NavBarIsVisible="False"
              Shell.TabBarIsVisible="False"
              x:DataType="viewmodel:NewHomeWorkViewModel">
-    <Grid Padding="0" BackgroundColor="{StaticResource Black}">
-        <Border Padding="10" VerticalOptions="StartAndExpand" Margin="-1" StrokeShape="RoundRectangle 0, 0, 24 ,24" StrokeThickness="0" BackgroundColor="{StaticResource Primary}" HeightRequest="200">
-            <Grid>
-                <ImageButton Source="cross.svg" WidthRequest="70" HorizontalOptions="EndAndExpand" Margin="0,0,0,135" Command="{Binding BackCommand}"/>
-                <Label Text="Neue Hausaufgabe" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="35" FontAttributes="Bold"/>
-            </Grid>
-        </Border>
-        <Grid Padding="10, 10, 10 ,50">
+    <Grid Padding="10" BackgroundColor="{StaticResource Tertiary}" RowDefinitions="30*, 60*, 10*">
+        <Grid VerticalOptions="StartAndExpand" Grid.Row="0">
+            <ImageButton Source="cross.svg" WidthRequest="50" HorizontalOptions="EndAndExpand" Margin="0,0,0,135" Command="{Binding BackCommand}"/>
+            <Label Text="Neue Hausaufgabe" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="35" FontAttributes="Bold"/>
+        </Grid>
+        <StackLayout Padding="10, 0, 10 ,10" Grid.Row="1">
             <StackLayout WidthRequest="350" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
                 <Border Padding="10,0,10,0">
                     <Picker x:Name="picker" Title="Wähle Fach" SelectedItem="{Binding Selected}" TitleColor="{StaticResource Gray300}">
@@ -33,18 +31,18 @@
                     </Picker>
                 </Border>
                 <Grid ColumnDefinitions="*, *" VerticalOptions="CenterAndExpand">
-                    <custom:OutlinedEntryControl Grid.Column="0" Text="{Binding PageString}" HeightRequest="50" Placeholder=" Seite " TitleBackgroundColor="{StaticResource Black}" KeyBoard="Numeric"/>
-                    <custom:OutlinedEntryControl Grid.Column="1" Text="{Binding NumberString}" HeightRequest="50" Placeholder=" Nummer " TitleBackgroundColor="{StaticResource Black}" KeyBoard="Numeric"/>
+                    <custom:OutlinedEntryControl Grid.Column="0" Text="{Binding PageString}" HeightRequest="50" Placeholder=" Seite " TitleBackgroundColor="{StaticResource Tertiary}" KeyBoard="Numeric"/>
+                    <custom:OutlinedEntryControl Grid.Column="1" Text="{Binding NumberString}" HeightRequest="50" Placeholder=" Nummer " TitleBackgroundColor="{StaticResource Tertiary}" KeyBoard="Numeric"/>
                 </Grid>
                 <Grid ColumnDefinitions="70*, 30*" VerticalOptions="CenterAndExpand">
-                    <custom:OutlinedEntryControl Grid.Column="0" Text="{Binding DescriptionString}" HeightRequest="50" Placeholder=" Beschreibung " TitleBackgroundColor="{StaticResource Black}"/>
+                    <custom:OutlinedEntryControl Grid.Column="0" Text="{Binding DescriptionString}" HeightRequest="50" Placeholder=" Beschreibung " TitleBackgroundColor="{StaticResource Tertiary}"/>
                     <Border Grid.Column="1">
                         <DatePicker Format="dd/MM/yyyy" MinimumDate="01/01/2023" MaximumDate="3/12/2025" Date="{Binding CurrentDate}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
                     </Border>
                 </Grid>
             </StackLayout>
 
-            <Button Command="{Binding AddCommand}" Text="Hinzufügen" VerticalOptions="EndAndExpand" HeightRequest="50" FontAttributes="Bold" FontSize="Title" TextTransform="Uppercase"/>
-        </Grid>
+            <Button Command="{Binding AddCommand}" Grid.Row="2" Text="Hinzufügen" VerticalOptions="EndAndExpand" HeightRequest="50" FontAttributes="Bold" FontSize="Title"/>
+        </StackLayout>
     </Grid>
 </ContentPage>
