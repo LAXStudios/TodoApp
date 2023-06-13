@@ -9,6 +9,7 @@ global using TodoApp.ViewModel;
 global using TodoApp.Services;
 global using TodoApp.Pages;
 global using TodoApp.PopUps;
+global using TodoApp.PopUps.BottomSheets;
 
 global using CommunityToolkit.Mvvm;
 global using CommunityToolkit.Maui.Alerts;
@@ -16,4 +17,7 @@ global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Maui.Views;
 
 global using Mopups;
+
+
+global using The49.Maui.BottomSheet;
 

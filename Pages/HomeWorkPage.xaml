@@ -29,7 +29,7 @@
                                             </StackLayout.GestureRecognizers>
                                             <Label Text="{Binding Subject}" FontSize="20" TextColor="White" VerticalTextAlignment="Center">
                                                 <Label.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=DetailCommand}" CommandParameter="{Binding .}"/>
+                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=DetailsCommand}" CommandParameter="{Binding .}"/>
                                                 </Label.GestureRecognizers>
                                             </Label>
                                             <Label Text="{Binding HomeWorkDate, StringFormat='Bis zum: {0}'}" FontSize="10" TextColor="{StaticResource Gray300}"/>

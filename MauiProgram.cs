@@ -16,6 +16,7 @@ public static class MauiProgram
 			.UseMauiApp<App>()
 			.UseMauiCommunityToolkit()
 			.ConfigureMopups()
+			.UseBottomSheet() 
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -38,7 +39,7 @@ public static class MauiProgram
 
 #if DEBUG
         builder.Logging.AddDebug();
-
+#endif
 		builder.Services.AddSingleton<MainPage>();
 		builder.Services.AddSingleton<MainPageViewModel>();
 
@@ -51,9 +52,11 @@ public static class MauiProgram
 		builder.Services.AddSingleton<DetailHomeWorkPopUp>();
 		builder.Services.AddSingleton<DetailsPopUpViewModel>();
 
+		builder.Services.AddTransient<HomeWorkDetailsButtomSheet>();
+		builder.Services.AddTransient<HomeWorkDetailsBottomSheetViewModel>();
+
 		builder.Services.AddSingleton<ILiteDBService, LiteDBService>();
 		builder.Services.AddSingleton<IHomeWorkService, HomeWorkService>();
-#endif
 
         return builder.Build();
 	}

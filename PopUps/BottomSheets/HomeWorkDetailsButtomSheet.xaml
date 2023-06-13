@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<the49:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+                   xmlns:custom="clr-namespace:TodoApp.CustomControls"
+                   xmlns:viewmodel="clr-namespace:TodoApp.ViewModel"
+             x:Class="TodoApp.PopUps.BottomSheets.HomeWorkDetailsButtomSheet"
+                   Padding="16, 32"
+                   HasBackdrop="True"
+                   HasHandle="True"
+                   BackgroundColor="{StaticResource Tertiary}"
+                   x:DataType="viewmodel:HomeWorkDetailsBottomSheetViewModel">
+    <the49:BottomSheet.Detents>
+        <!-- Stop at the height of the page content -->
+        <!-- Stop at 120dp -->
+        <!--<the49:HeightDetent Height="50" />-->
+        <!-- Stop at 45% of the screen height -->
+        <!--<the49:RatioDetent Ratio="0.4"  />-->
+        <!-- Stop at the height of the divider view -->
+        <the49:AnchorDetent Anchor="{x:Reference divider}" />
+        <the49:ContentDetent/>
+    </the49:BottomSheet.Detents>
+    <VerticalStackLayout Spacing="16">
+        <VerticalStackLayout>
+            <Label Text="{Binding Subject}" FontSize="40" TextColor="White"/>
+            <HorizontalStackLayout>
+                <Grid ColumnDefinitions="*,*">
+                    <HorizontalStackLayout Grid.Column="0">
+                        <Label Text="{Binding HomeWorkClass.HomeWorkPage}" FontSize="40"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Grid.Column="1">
+                        <Label Text="{Binding HomeWorkClass.HomeWorkNumber}" FontSize="40"/>
+                    </HorizontalStackLayout>
+                </Grid>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+        <BoxView x:Name="divider" BackgroundColor="Gray" HeightRequest="1"/>
+        <VerticalStackLayout>
+            <custom:OutlinedEntryControl Text="Test" HeightRequest="50" Placeholder=" Seite " TitleBackgroundColor="{StaticResource Tertiary}" KeyBoard="Numeric"/>
+            <custom:OutlinedEntryControl Text="Test" HeightRequest="50" Placeholder=" Nummer " TitleBackgroundColor="{StaticResource Tertiary}" KeyBoard="Numeric"/>
+            <custom:OutlinedEntryControl Text="Test" HeightRequest="50" Placeholder=" Beschreibung " TitleBackgroundColor="{StaticResource Tertiary}"/>
+                <Border Grid.Column="1">
+                    <!--<DatePicker Format="dd/MM/yyyy" MinimumDate="01/01/2023" MaximumDate="3/12/2025" Date="{Binding CurrentDate}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>-->
+                </Border>
+
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</the49:BottomSheet>

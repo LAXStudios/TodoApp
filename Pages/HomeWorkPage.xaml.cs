@@ -16,4 +16,11 @@ public partial class HomeWorkPage : ContentPage
 
         MainThread.BeginInvokeOnMainThread(async () => await viewModel.LoadData());
     }
+
+    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        HomeWorkDetailsBottomSheetViewModel vm = new();
+        var page = new HomeWorkDetailsButtomSheet(vm);
+        page.ShowAsync(Window);
+    }
 }

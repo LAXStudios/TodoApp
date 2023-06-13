@@ -10,6 +10,7 @@ using CommunityToolkit.Maui.Views;
 using Mopups.Services;
 using TodoApp.PopUps;
 using TodoApp.Model;
+using TodoApp.PopUps.BottomSheets;
 
 namespace TodoApp.ViewModel
 {
@@ -76,10 +77,10 @@ namespace TodoApp.ViewModel
         }
 
         [RelayCommand]
-        async Task Detail(HomeWork homeWork)
+        async Task Details(HomeWork homeWork)
         {
-            DetailsPopUpViewModel viewModel = new();
-            await MopupService.Instance.PushAsync(new DetailHomeWorkPopUp(viewModel, homeWork));
+            HomeWorkDetailsBottomSheetViewModel vm = new();
+            vm.Give(homeWork);
         }
     }
 }
