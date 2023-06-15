@@ -33,7 +33,8 @@ namespace TodoApp.Model
 
         public bool IsDone { get; set; }
 
-        public string HomeWorkDate { get; set; }
+        public string DisplayDate { get; set; }
+        public DateTime dateTime { get; set; }
 
     }
 }

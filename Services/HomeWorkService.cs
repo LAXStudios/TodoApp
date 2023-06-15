@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TodoApp.Model;
 
 namespace TodoApp.Services
 {
@@ -48,9 +49,16 @@ namespace TodoApp.Services
             return homeworks;
         }
 
-        public Task Update(HomeWork homeWork)
+        public async Task Update(HomeWork homeWork)
         {
-            throw new NotImplementedException();
+            using var db = new LiteDatabase(GetConnectionString());
+            var collection = db.GetCollection<HomeWork>("homeworks");
+            collection.EnsureIndex(x => x.Id);
+            var itemToDelete = collection.FindOne(x => x.Id == homeWork.Id);
+            if (itemToDelete != null)
+            {
+                collection.Update(itemToDelete);
+            }
         }
 
         private string GetConnectionString()

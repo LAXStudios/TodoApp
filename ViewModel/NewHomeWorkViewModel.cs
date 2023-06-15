@@ -53,7 +53,8 @@ namespace TodoApp.ViewModel
                     HomeWorkPage = PageString,
                     HomeWorkNumber = NumberString,
                     Description = DescriptionString,
-                    HomeWorkDate = newCurrentDate,
+                    DisplayDate = newCurrentDate,
+                    dateTime = CurrentDate,
                     IsDone = false,
                 };
                 await _homeWorkService.Add(homeWork);

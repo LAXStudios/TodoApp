@@ -52,8 +52,8 @@ public static class MauiProgram
 		builder.Services.AddSingleton<DetailHomeWorkPopUp>();
 		builder.Services.AddSingleton<DetailsPopUpViewModel>();
 
-		builder.Services.AddTransient<HomeWorkDetailsButtomSheet>();
-		builder.Services.AddTransient<HomeWorkDetailsBottomSheetViewModel>();
+		builder.Services.AddSingleton<HomeWorkDetailsButtomSheet>();
+		builder.Services.AddSingleton<HomeWorkDetailsBottomSheetViewModel>();
 
 		builder.Services.AddSingleton<ILiteDBService, LiteDBService>();
 		builder.Services.AddSingleton<IHomeWorkService, HomeWorkService>();

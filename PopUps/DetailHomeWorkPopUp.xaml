@@ -7,9 +7,9 @@
              Title="DetailHomeWorkPopUp" CloseWhenBackgroundIsClicked="True" BackgroundColor="#80000000"
                  x:DataType="viewmodel:DetailsPopUpViewModel">
     <StackLayout BackgroundColor="{StaticResource Secondary}" Padding="15" HeightRequest="350" WidthRequest="300" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-            <Label Text="{Binding HomeWork.Subject}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="35" FontAttributes="Bold"/>
-            <Label Text="{Binding HomeWork.Combine}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="30"/>
-            <Label Text="{Binding HomeWork.HomeWorkDate}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="30"/>
-            <Label Text="{Binding HomeWork.Description}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="30"/>
+            <Label Text="{Binding HomeWorkClass.Subject}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="35" FontAttributes="Bold"/>
+            <Label Text="{Binding HomeWorkClass.Combine}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="30"/>
+            <Label Text="{Binding HomeWorkClass.DisplayDate}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="30"/>
+            <Label Text="{Binding HomeWorkClass.Description}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="30"/>
     </StackLayout>
 </mopup:PopupPage>

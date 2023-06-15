@@ -19,8 +19,9 @@ public partial class HomeWorkPage : ContentPage
 
     private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     {
-        HomeWorkDetailsBottomSheetViewModel vm = new();
-        var page = new HomeWorkDetailsButtomSheet(vm);
+        var collectionView = (Label)sender;
+        var item = (HomeWork)collectionView.BindingContext;
+        var page = new HomeWorkDetailsButtomSheet(item);
         page.ShowAsync(Window);
     }
 }

@@ -9,7 +9,7 @@ namespace TodoApp.ViewModel
     public partial class DetailsPopUpViewModel : BaseViewModel
     {
         [ObservableProperty]
-        HomeWork homeWork;
+        HomeWork homeWorkClass;
 
         public DetailsPopUpViewModel() 
         {
@@ -18,7 +18,7 @@ namespace TodoApp.ViewModel
 
         public void Give(HomeWork homeWork)
         {
-            HomeWork = homeWork;
+            HomeWorkClass = homeWork;
         }
     }
 }

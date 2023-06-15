@@ -40,6 +40,9 @@ namespace TodoApp.ViewModel
             await Shell.Current.GoToAsync(nameof(NewHomeWorkPage));
         }
 
+        [ObservableProperty]
+        bool isRefreshing;
+
         public async Task LoadData()
         {
             List<HomeWork> resuslt = await _homeWorkService.GetAllHomeWork();
@@ -74,6 +77,14 @@ namespace TodoApp.ViewModel
                 */
             }
             HomeWorkList = resuslt;
+        }
+
+        [RelayCommand]
+        async Task Refresh()
+        {
+            IsRefreshing = true;
+            await LoadData();
+            IsRefreshing = false;
         }
 
         [RelayCommand]

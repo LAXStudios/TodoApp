@@ -5,6 +5,7 @@
              xmlns:viewmodel="clr-namespace:TodoApp.ViewModel"
              xmlns:custom="clr-namespace:TodoApp.CustomControls"
              xmlns:converter="clr-namespace:TodoApp.Converter"
+             xmlns:toolkit="clr-namespace:CommunityToolkit.Maui;assembly=CommunityToolkit.Maui"
              x:Class="TodoApp.MainPage"
              x:DataType="viewmodel:MainPageViewModel"
              Title="Todos" BackgroundColor="{StaticResource Tertiary}" Shell.NavBarIsVisible="False">
@@ -12,7 +13,7 @@
     <ContentPage.Resources>
         <converter:BoolToColorConverter x:Key="BCConverter"/>
     </ContentPage.Resources>
-    
+
     <!--xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"-->
     <!--toolkit:SetFocusOnEntryCompletedBehavior.NextElement="{x:Reference btnAdd}"-->
     <Grid Padding="10">
