@@ -18,6 +18,9 @@ namespace TodoApp.ViewModel
         [ObservableProperty]
         List<Todo> todos;
 
+        [ObservableProperty]
+        List<Todo> deleteList;
+
         private readonly ILiteDBService liteDB;
 
         public MainPageViewModel(ILiteDBService liteDB)
@@ -35,12 +38,19 @@ namespace TodoApp.ViewModel
         [ObservableProperty]
         bool isRefreshing = false;
 
+        [ObservableProperty]
+        string titleLabel;
 
+        string title
+        {
+            get { return Todos.Count > 1 ? "Todos" : "Todo"; }
+        }
 
         public async Task LoadData()
         {
             List<Todo> result = await liteDB.GetAll();
             Todos = result;
+            TitleLabel = title;
         }
 
         [RelayCommand]
@@ -53,7 +63,6 @@ namespace TodoApp.ViewModel
         [RelayCommand]
         async Task Delete(Todo todo)
         {
-            Label = todo.Title;
             await liteDB.Delete(todo.Id);
             await LoadData();
         }

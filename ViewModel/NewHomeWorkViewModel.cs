@@ -61,13 +61,5 @@ namespace TodoApp.ViewModel
                 await Shell.Current.GoToAsync("..");
             }
         }
-
-        [RelayCommand]
-        async Task Back()
-        {
-            await Shell.Current.GoToAsync("..");
-        }
-
-
     }
 }

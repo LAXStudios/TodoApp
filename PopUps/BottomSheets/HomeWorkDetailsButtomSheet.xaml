@@ -18,9 +18,10 @@
         <!-- Stop at the height of the divider view -->
         <the49:AnchorDetent Anchor="{x:Reference divider}" />
         <the49:ContentDetent/>
+        <the49:FullscreenDetent/>
     </the49:BottomSheet.Detents>
     <StackLayout Spacing="16">
-        <StackLayout Spacing="20">
+        <StackLayout Spacing="40" Padding="0, 0, 0, 10">
             <Label x:Name="lblSubject" FontSize="40" TextColor="White"/>
             <Grid ColumnDefinitions="50*, 50*">
                 <HorizontalStackLayout Grid.Column="0" Padding="0" Spacing="4" HeightRequest="20" VerticalOptions="CenterAndExpand">
@@ -49,8 +50,8 @@
                     </Picker.ItemsSource>
                 </Picker>
             </Border>
-            <custom:OutlinedEntryControl x:Name="etyPage" HeightRequest="50" Placeholder=" Seite " TitleBackgroundColor="{StaticResource Tertiary}" KeyBoard="Numeric"/>
-            <custom:OutlinedEntryControl x:Name="etyNumber" HeightRequest="50" Placeholder=" Nummer " TitleBackgroundColor="{StaticResource Tertiary}" KeyBoard="Numeric"/>
+            <custom:OutlinedEntryControl x:Name="etyPage" HasContent="True" HeightRequest="50" Placeholder=" Seite " TitleBackgroundColor="{StaticResource Tertiary}" KeyBoard="Numeric"/>
+            <custom:OutlinedEntryControl x:Name="etyNumber" HasContent="True" HeightRequest="50" Placeholder=" Nummer " TitleBackgroundColor="{StaticResource Tertiary}" KeyBoard="Numeric"/>
             <custom:OutlinedEntryControl x:Name="etyDescription" HeightRequest="50" Placeholder=" Beschreibung " TitleBackgroundColor="{StaticResource Tertiary}"/>
             <Border Grid.Column="1">
                 <Grid ColumnDefinitions="90*, 10*" Padding="10, 0">

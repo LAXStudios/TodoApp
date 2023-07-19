@@ -22,7 +22,7 @@
                 <TapGestureRecognizer Command="{Binding UnFocusCommand}" CommandParameter="{Binding Source={x:Reference stacklayout}}"/>
             </StackLayout.GestureRecognizers>
             <StackLayout HeightRequest="175">
-                <Label Text="Hausaufgaben" FontSize="32" VerticalOptions="CenterAndExpand" Padding="10, 0, 0, 0"/>
+                <Label Text="{Binding TitleLabel}" FontSize="32" VerticalOptions="CenterAndExpand" Padding="10, 0, 0, 0"/>
             </StackLayout>
             <Grid ColumnDefinitions="70*, 30*" Padding="10" ColumnSpacing="5" HeightRequest="80">
                 <!--<custom:OutlinedEntryControl Placeholder="Todo"/>-->
@@ -41,7 +41,6 @@
                     </VisualStateManager.VisualStateGroups>
                 </Button>
             </Grid>
-            <Label Text="{Binding Label}" TextColor="White" IsVisible="False"/>
             <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
                 <CollectionView ItemsSource="{Binding Todos}" BackgroundColor="#151515" VerticalOptions="StartAndExpand">
                     <CollectionView.ItemTemplate>

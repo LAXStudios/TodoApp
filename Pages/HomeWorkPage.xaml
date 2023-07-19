@@ -6,10 +6,10 @@
              x:Class="TodoApp.Pages.HomeWorkPage"
              Title="Hausaufgaben"
              x:DataType="viewmodel:HomeWorkViewModel" Shell.NavBarIsVisible="False">
-    <Grid Padding="10" Style="{DynamicResource 15Stack}">
+    <Grid Padding="10" Style="{DynamicResource 15Stack}" IgnoreSafeArea="{OnPlatform Android=true, iOS=true}">
         <StackLayout>
             <StackLayout HeightRequest="175">
-                <Label Text="Todos" FontSize="32" VerticalOptions="CenterAndExpand" Padding="10, 0, 0, 0"/>
+                <Label Text="Hausaufgaben" FontSize="32" VerticalOptions="CenterAndExpand" Padding="10, 0, 0, 0"/>
             </StackLayout>
             <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
                 <CollectionView ItemsSource="{Binding HomeWorkList}" x:Name="collection">

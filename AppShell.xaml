@@ -14,6 +14,9 @@
         <Tab Icon="calendar.svg">
             <ShellContent ContentTemplate="{DataTemplate pages:HomeWorkPage}"/>
         </Tab>
+        <Tab Title="Test">
+            <ShellContent ContentTemplate="{DataTemplate pages:LifeManagerPage}"/>
+        </Tab>
     </TabBar>
     
 

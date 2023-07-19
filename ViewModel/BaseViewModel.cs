@@ -21,5 +21,11 @@ namespace TodoApp.ViewModel
                 cb.IsChecked = false;
             }
         }
+
+        [RelayCommand]
+        async Task Back()
+        {
+            await Shell.Current.GoToAsync("..");
+        }
     }
 }

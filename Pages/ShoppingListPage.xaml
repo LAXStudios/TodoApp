@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:TodoApp.ViewModel"
+             x:Class="TodoApp.Pages.ShoppingListPage"
+             Title="ShoppingListPage"
+             Shell.NavBarIsVisible="False"
+             x:DataType="viewmodel:LifeManangerViewModel">
+    <Grid Padding="10" Style="{DynamicResource 15Stack}" IgnoreSafeArea="{OnPlatform Android=true, iOS=false}">
+        <StackLayout>
+            <HorizontalStackLayout HeightRequest="175">
+                <Image Source="cross.svg" HeightRequest="50" WidthRequest="50">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Einkaufsliste" FontSize="32" VerticalOptions="CenterAndExpand" Padding="10, 0, 0, 0"/>
+            </HorizontalStackLayout>
+            <StackLayout>
+                <CollectionView>
+                    
+                </CollectionView>
+            </StackLayout>
+        </StackLayout>
+    </Grid>
+</ContentPage>

@@ -1,3 +1,7 @@
+using Microsoft.Maui;
+using System.Runtime.InteropServices;
+using CommunityToolkit.Maui.Core.Platform;
+
 namespace TodoApp.CustomControls;
 
 public partial class OutlinedEntryControl : Grid
@@ -5,6 +9,7 @@ public partial class OutlinedEntryControl : Grid
 	public OutlinedEntryControl()
 	{
 		InitializeComponent();
+        txtEntry.Unfocus();
 	}
 
     public static readonly BindableProperty TextProperty = BindableProperty.Create(
@@ -27,6 +32,19 @@ public partial class OutlinedEntryControl : Grid
         declaringType: typeof(OutlinedEntryControl),
         defaultValue: Keyboard.Default,
         defaultBindingMode: BindingMode.TwoWay);
+
+    public static readonly BindableProperty HasContentProperty = BindableProperty.Create(
+        propertyName: nameof(HasContent),
+        returnType: typeof(bool),
+        declaringType: typeof(OutlinedEntryControl),
+        defaultValue: false,
+        defaultBindingMode: BindingMode.TwoWay);
+
+    public bool HasContent
+    {
+        get => (bool)GetValue(HasContentProperty);
+        set { SetValue(HasContentProperty, value); }
+    }
 
     public string Text
     {
@@ -59,16 +77,18 @@ public partial class OutlinedEntryControl : Grid
         set { SetValue(PlaceholderProperty, value); }
     }
 
-    private void txtEntry_Focused(object sender, FocusEventArgs e)
+    CancellationTokenSource token = new();
+
+    private async void txtEntry_Focused(object sender, FocusEventArgs e)
     {
 
         lblPlaceholder.FontSize = 11;
-        lblPlaceholder.TranslateTo(0, -20, 80, easing: Easing.Linear);
+        await lblPlaceholder.TranslateTo(0, -20, 80, easing: Easing.Linear);
     }
 
     private void txtEntry_Unfocused(object sender, FocusEventArgs e)
     {
-        if (!string.IsNullOrWhiteSpace(Text))
+        if (!string.IsNullOrWhiteSpace(Text) && HasContent != false)
         {
             lblPlaceholder.FontSize = 11;
             lblPlaceholder.TranslateTo(0, -20, 80, easing: Easing.Linear);

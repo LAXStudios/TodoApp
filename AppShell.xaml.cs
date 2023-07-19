@@ -1,4 +1,6 @@
-﻿namespace TodoApp;
+﻿using TodoApp.Pages;
+
+namespace TodoApp;
 
 public partial class AppShell : Shell
 {
@@ -7,5 +9,6 @@ public partial class AppShell : Shell
 		InitializeComponent();
 
 		Routing.RegisterRoute(nameof(NewHomeWorkPage), typeof(NewHomeWorkPage));
+		Routing.RegisterRoute(nameof(ShoppingListPage), typeof(ShoppingListPage));
 	}
 }

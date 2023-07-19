@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TodoApp.Pages.LifeManagerPage"
+             xmlns:viewmodel="clr-namespace:TodoApp.ViewModel"
+             Title="LifeManagerPage"
+             Shell.NavBarIsVisible="False"
+             x:DataType="viewmodel:LifeManangerViewModel">
+    <ContentPage.Resources>
+        <Style TargetType="Border" x:Key="BasicBorder">
+            <Setter Property="StrokeShape" Value="RoundRectangle 12"/>
+            <Setter Property="StrokeThickness" Value="0"/>
+        </Style>
+    </ContentPage.Resources>
+    <Grid Padding="10" Style="{DynamicResource 15Stack}" IgnoreSafeArea="{OnPlatform Android=true, iOS=false}">
+        <StackLayout>
+            <StackLayout HeightRequest="175">
+                <Label Text="Willkommen" FontSize="32" VerticalOptions="CenterAndExpand" Padding="10, 0, 0, 0"/>
+            </StackLayout>
+            <Grid RowDefinitions="50*, 50*" RowSpacing="10" ColumnDefinitions="50*,50*" ColumnSpacing="10" HeightRequest="250">
+                <Border Style="{StaticResource BasicBorder}" StrokeShape="RoundRectangle 12" BackgroundColor="#F39C12" Grid.Row="0" Grid.Column="0">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShoopingListCommand}"/>
+                    </Border.GestureRecognizers>
+                    <StackLayout Padding="10">
+                        <Label Text="Einkauf" FontSize="25" FontAttributes="Bold"/>
+                    </StackLayout>
+                </Border>
+                <Border Style="{StaticResource BasicBorder}" StrokeShape="RoundRectangle 12" BackgroundColor="#27AE60" Grid.Row="0" Grid.Column="1">
+                    
+                </Border>
+                <Border Style="{StaticResource BasicBorder}" StrokeShape="RoundRectangle 12" BackgroundColor="#E74C3C" Grid.Row="1" Grid.Column="0">
+                    
+                </Border>
+            </Grid>
+        </StackLayout>
+    </Grid>
+</ContentPage>
