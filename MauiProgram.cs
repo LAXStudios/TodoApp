@@ -37,9 +37,11 @@ public static class MauiProgram
 #endif
             });
 
+		
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
+		
 		builder.Services.AddSingleton<MainPage>();
 		builder.Services.AddSingleton<MainPageViewModel>();
 
@@ -61,9 +63,14 @@ public static class MauiProgram
 		builder.Services.AddSingleton<ShoppingListPage>();
 		builder.Services.AddSingleton<ShoppingListViewModel>();
 
+		builder.Services.AddSingleton<SettingsPage>();
+		builder.Services.AddSingleton<SettingsPageViewModel>();
+
 
 		builder.Services.AddSingleton<ILiteDBService, LiteDBService>();
 		builder.Services.AddSingleton<IHomeWorkService, HomeWorkService>();
+
+		builder.Services.AddSingleton<ISettingsService, SettingsService>();
 
         return builder.Build();
 	}

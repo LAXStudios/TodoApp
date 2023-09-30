@@ -23,23 +23,29 @@ namespace TodoApp.ViewModel
 
         private readonly ILiteDBService liteDB;
 
-        public MainPageViewModel(ILiteDBService liteDB)
+        private readonly ISettingsService settingsService;
+
+        public MainPageViewModel(ILiteDBService liteDB, ISettingsService settingsService)
         {
             Todos = new List<Todo>();
             this.liteDB = liteDB;
+            this.settingsService = settingsService;
         }
 
         [ObservableProperty]
         bool showEntry = false;
 
         [ObservableProperty]
-        string label = "Version: Pre alpha | LAXStudios©";
+        string label;
 
         [ObservableProperty]
         bool isRefreshing = false;
 
         [ObservableProperty]
         string titleLabel;
+
+        [ObservableProperty]
+        bool isDeveloperMode;
 
         string title
         {
@@ -51,6 +57,17 @@ namespace TodoApp.ViewModel
             List<Todo> result = await liteDB.GetAll();
             Todos = result;
             TitleLabel = title;
+            IsDeveloperMode = await settingsService.Get<bool>(nameof(IsDeveloperMode), false);
+            if (IsDeveloperMode)
+            {
+                Label = "Pre Alpha | laxstudios";
+            }
+        }
+
+        [RelayCommand]
+        public async Task Settings()
+        {
+            await Shell.Current.GoToAsync(nameof(SettingsPage));
         }
 
         [RelayCommand]
