@@ -54,6 +54,7 @@
 	  <None Remove="Resources\Images\Book.svg" />
 	  <None Remove="Resources\Images\calendar.svg" />
 	  <None Remove="Resources\Images\cross.svg" />
+	  <None Remove="Resources\Images\settings.svg" />
 	  <None Remove="Resources\Images\todo.svg" />
 	</ItemGroup>
 

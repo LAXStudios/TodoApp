@@ -21,10 +21,10 @@
             <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding UnFocusCommand}" CommandParameter="{Binding Source={x:Reference stacklayout}}"/>
             </StackLayout.GestureRecognizers>
-            <StackLayout HeightRequest="175">
-                <Label Text="{Binding TitleLabel}" FontSize="32" VerticalOptions="CenterAndExpand" Padding="10, 0, 0, 0"/>
+            <StackLayout HeightRequest="175" Orientation="Horizontal" Padding="10, 0, 10, 0">
+                <Label Text="{Binding TitleLabel}" FontSize="32" VerticalOptions="CenterAndExpand"/>
+                <ImageButton Source="settings.svg" HeightRequest="40" WidthRequest="40" HorizontalOptions="EndAndExpand" Command="{Binding SettingsCommand}"/>
             </StackLayout>
-            <Button Text="Einstellungen" Command="{Binding SettingsCommand}"/>
             <Grid ColumnDefinitions="70*, 30*" Padding="10" ColumnSpacing="5" HeightRequest="80">
                 <!--<custom:OutlinedEntryControl Placeholder="Todo"/>-->
                 <Border Margin="-2.3" Grid.Column="0" Padding="0" BackgroundColor="Transparent" StrokeShape="RoundRectangle 8" StrokeThickness="2" Stroke="{StaticResource Primary}"  HeightRequest="60">
