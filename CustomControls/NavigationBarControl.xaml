@@ -2,6 +2,6 @@
 <Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TodoApp.CustomControls.NavigationBarControl"
-      HeightRequest="70">
-    <ImageButton Clicked="ImageButton_Clicked" Source="back.svg" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="50" HeightRequest="50"/>
+      HeightRequest="90">
+    <ImageButton Margin="0, 20 , 0, 0" Clicked="ImageButton_Clicked" Source="back.svg" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="50" HeightRequest="50"/>
 </Grid>

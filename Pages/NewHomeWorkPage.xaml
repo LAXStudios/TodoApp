@@ -22,9 +22,13 @@
                             <x:Array Type="{x:Type x:String}">
                                 <x:String>Mathe</x:String>
                                 <x:String>Deutsch</x:String>
+                                <x:String>Englisch</x:String>
                                 <x:String>Französisch</x:String>
+                                <x:String>Spanisch</x:String>
+                                <x:String>Latein</x:String>
                                 <x:String>Philosophie</x:String>
                                 <x:String>Kunst</x:String>
+                                <x:String>Sport</x:String>
                                 <x:String>Informatik</x:String>
                             </x:Array>
                         </Picker.ItemsSource>

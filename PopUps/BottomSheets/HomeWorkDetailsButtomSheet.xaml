@@ -34,7 +34,7 @@
                 </HorizontalStackLayout>
             </Grid>
         </StackLayout>
-        <BoxView x:Name="divider" BackgroundColor="Gray" HeightRequest="3" CornerRadius="90"/>
+        <BoxView x:Name="divider" BackgroundColor="Gray" HeightRequest="1" CornerRadius="90"/>
         <StackLayout Spacing="5">
             <Border Padding="10,0,10,0">
                 <Picker x:Name="picker" Title="Wähle ein Fach" SelectedItem="{Binding Selected}" TitleColor="{StaticResource Gray300}">

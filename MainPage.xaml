@@ -25,9 +25,9 @@
                 <Label Text="{Binding TitleLabel}" FontSize="32" VerticalOptions="CenterAndExpand"/>
                 <ImageButton Source="settings.svg" HeightRequest="40" WidthRequest="40" HorizontalOptions="EndAndExpand" Command="{Binding SettingsCommand}"/>
             </StackLayout>
-            <Grid ColumnDefinitions="70*, 30*" Padding="10" ColumnSpacing="5" HeightRequest="80">
+            <Grid ColumnDefinitions="70*, 30*" Padding="7" ColumnSpacing="5" HeightRequest="80">
                 <!--<custom:OutlinedEntryControl Placeholder="Todo"/>-->
-                <Border Margin="-2.3" Grid.Column="0" Padding="0" BackgroundColor="Transparent" StrokeShape="RoundRectangle 8" StrokeThickness="2" Stroke="{StaticResource Primary}"  HeightRequest="60">
+                <Border Margin="-2,3" Grid.Column="0" Padding="0" BackgroundColor="Transparent" StrokeShape="RoundRectangle 8" StrokeThickness="2" Stroke="{StaticResource Primary}"  HeightRequest="60">
                     <Entry x:Name="entry" Placeholder="Neues Todo" PlaceholderColor="Gray" TextColor="White" Margin="10" BackgroundColor="Transparent"/>
                 </Border>
                 <Button x:Name="btnAdd" Grid.Column="1" Text="Neu" Command="{Binding AddTodoCommand}" CommandParameter="{Binding Source={x:Reference entry}}" FontAttributes="Bold" TextTransform="Uppercase" FontSize="18" HeightRequest="57">
@@ -71,6 +71,6 @@
                 </CollectionView>
             </RefreshView>
         </StackLayout>
-        <Label Text="{Binding Label}" Opacity="50" VerticalOptions="EndAndExpand"/>
+        <Label Text="{Binding Label}" IsVisible="{Binding IsDeveloperMode}" Opacity="50" VerticalOptions="EndAndExpand"/>
     </Grid>
 </ContentPage>

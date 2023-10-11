@@ -8,7 +8,12 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 		mainPageVM = mainPageViewModel;
 		this.BindingContext = mainPageViewModel;
-	}
+
+        this.Appearing += (sender, e) =>
+        {
+            MainThread.BeginInvokeOnMainThread(async () => await mainPageVM.LoadData());
+        };
+    }
 
     protected override void OnAppearing()
     {

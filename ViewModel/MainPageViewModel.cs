@@ -30,6 +30,8 @@ namespace TodoApp.ViewModel
             Todos = new List<Todo>();
             this.liteDB = liteDB;
             this.settingsService = settingsService;
+
+            Label = "Pre Alpha | laxstudios";
         }
 
         [ObservableProperty]
@@ -58,10 +60,6 @@ namespace TodoApp.ViewModel
             Todos = result;
             TitleLabel = title;
             IsDeveloperMode = await settingsService.Get<bool>(nameof(IsDeveloperMode), false);
-            if (IsDeveloperMode)
-            {
-                Label = "Pre Alpha | laxstudios";
-            }
         }
 
         [RelayCommand]
