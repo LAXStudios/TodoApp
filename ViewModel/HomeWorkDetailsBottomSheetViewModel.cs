@@ -16,7 +16,6 @@ namespace TodoApp.ViewModel
         public void Give(HomeWork homeWork)
         {
             HomeWorkClass = homeWork;
-            Subject = "Moin";
         }
     }
 }

@@ -3,5 +3,5 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TodoApp.CustomControls.NavigationBarControl"
       HeightRequest="70">
-    <ImageButton Clicked="ImageButton_Clicked" Margin="10" BackgroundColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="50" HeightRequest="50"/>
+    <ImageButton Clicked="ImageButton_Clicked" Source="back.svg" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="50" HeightRequest="50"/>
 </Grid>

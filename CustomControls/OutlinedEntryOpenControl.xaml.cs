@@ -1,16 +1,17 @@
-using Microsoft.Maui;
-using System.Runtime.InteropServices;
-using CommunityToolkit.Maui.Core.Platform;
-
 namespace TodoApp.CustomControls;
 
-public partial class OutlinedEntryControl : Grid
+public partial class OutlinedEntryOpenControl : Grid
 {
-	public OutlinedEntryControl()
+	public OutlinedEntryOpenControl()
 	{
 		InitializeComponent();
-        //txtEntry.Unfocus();
-	}
+
+        if (!HasContent)
+        {
+            lblPlaceholder.FontSize = 11;
+            lblPlaceholder.TranslateTo(0, -20, 80, easing: Easing.Linear);
+        }
+    }
 
     public static readonly BindableProperty TextProperty = BindableProperty.Create(
        propertyName: nameof(Text),
@@ -81,23 +82,14 @@ public partial class OutlinedEntryControl : Grid
 
     private async void txtEntry_Focused(object sender, FocusEventArgs e)
     {
-
         lblPlaceholder.FontSize = 11;
         await lblPlaceholder.TranslateTo(0, -20, 80, easing: Easing.Linear);
     }
 
     private void txtEntry_Unfocused(object sender, FocusEventArgs e)
     {
-        if (!string.IsNullOrWhiteSpace(Text) && HasContent)
-        {
-            lblPlaceholder.FontSize = 11;
-            lblPlaceholder.TranslateTo(0, -20, 80, easing: Easing.Linear);
-        }
-        else
-        {
-            lblPlaceholder.FontSize = 15;
-            lblPlaceholder.TranslateTo(0, 0, 80, easing: Easing.Linear);
-        }
+        lblPlaceholder.FontSize = 11;
+        lblPlaceholder.TranslateTo(0, -20, 80, easing: Easing.Linear);
     }
 
     private void TapGestureRecognizer_Tapped(object sender, EventArgs e)

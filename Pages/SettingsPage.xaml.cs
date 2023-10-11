@@ -1,15 +1,18 @@
+using System.Collections.ObjectModel;
+
 namespace TodoApp.Pages;
 
 public partial class SettingsPage : ContentPage
 {
-	SettingsPageViewModel viewModel;
+
+    SettingsPageViewModel viewModel;
 	public SettingsPage(SettingsPageViewModel viewModel)
 	{
 		InitializeComponent();
 		this.viewModel = viewModel;
-		this.BindingContext = viewModel;
-	}
+        this.BindingContext = viewModel;
 
+	}
 
     protected override void OnAppearing()
     {

@@ -2,12 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:TodoApp.CustomControls"
+             xmlns:viewmodel="clr-namespace:TodoApp.ViewModel"
              x:Class="TodoApp.Pages.SettingsPage"
+             x:DataType="viewmodel:SettingsPageViewModel"
              Shell.NavBarIsVisible="False">
     <Grid RowDefinitions="10*, 90*" BackgroundColor="{StaticResource Tertiary}">
         <controls:NavigationBarControl Grid.Row="0"/>
         <Grid Grid.Row="1" Padding="10">
-            <VerticalStackLayout>
+            <VerticalStackLayout Spacing="10">
                 <Label Text="Einstellungen" VerticalOptions="Center"  FontAttributes="Bold" FontSize="Title"/>
                 <Border>
                     <Grid Padding="10">
@@ -15,6 +17,11 @@
                         <Switch IsToggled="{Binding IsDeveloperMode}" HorizontalOptions="End"/>
                     </Grid>
                 </Border>
+                <Border Stroke="Gray" BackgroundColor="Gray" HeightRequest="1" StrokeShape="RoundRectangle 90"/>
+
+                <!--<Border Padding="10">
+
+                </Border>-->
             </VerticalStackLayout>
             <Button x:Name="saveButton" Text="Speichern" FontAttributes="Bold" Command="{Binding SaveCommand}" Margin="0,50,0,0" HeightRequest="45" VerticalOptions="End"/>
         </Grid>

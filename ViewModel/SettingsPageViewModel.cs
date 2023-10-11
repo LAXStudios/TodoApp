@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,10 +13,22 @@ namespace TodoApp.ViewModel
         [ObservableProperty]
         bool isDeveloperMode;
 
+        [ObservableProperty]
+        ObservableCollection<string> items = new();
+
+        [ObservableProperty]
+        string newItemText;
+
         private ISettingsService settingsService;
         public SettingsPageViewModel(ISettingsService settingsService)
         {
             this.settingsService = settingsService;
+
+            Items.Add("Mathe");
+            Items.Add("Deutsch");
+            Items.Add("Englisch");
+
+
             //VisualStateManager.GoToState(SaveButton, "Disable");
         }
 
@@ -23,6 +36,14 @@ namespace TodoApp.ViewModel
         Task Save()
         {
             settingsService.Set<bool>(nameof(IsDeveloperMode), IsDeveloperMode);
+            return Task.CompletedTask;
+        }
+
+        [RelayCommand]
+        Task SaveSubjects()
+        {
+            // settingsService.Set<List<string>>(nameof(Subjects), Subjects);
+
             return Task.CompletedTask;
         }
 

@@ -8,5 +8,6 @@ namespace TodoApp.Handler
 {
     public class BorderlessEntry : Entry
     {
+
     }
 }
