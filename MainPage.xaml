@@ -43,7 +43,7 @@
                 </Button>
             </Grid>
             <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
-                <CollectionView ItemsSource="{Binding Todos}" BackgroundColor="#151515" VerticalOptions="StartAndExpand">
+                <CollectionView Grid.Row="0" Grid.RowSpan="1" ItemsSource="{Binding Todos}" BackgroundColor="#151515" VerticalOptions="StartAndExpand">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Todo">
                             <StackLayout Padding="6">

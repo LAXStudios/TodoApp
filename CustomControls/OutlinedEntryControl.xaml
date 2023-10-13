@@ -5,8 +5,9 @@
       x:Class="TodoApp.CustomControls.OutlinedEntryControl"
       x:Name="this">
     <Border Grid.Row="0" StrokeShape="RoundRectangle 12" Padding="10,2,10,2" Stroke="{StaticResource Primary}" BackgroundColor="Transparent" StrokeThickness="2">
-        <handler:BorderlessEntry x:Name="txtEntry" 
+        <handler:BorderlessEntry x:Name="txtEntry"
                                  TextColor="White"
+                                 HasUnderline="False"
                Focused="txtEntry_Focused" 
                Unfocused="txtEntry_Unfocused"
                Text="{Binding Source={x:Reference this},Path=Text}" Keyboard="{Binding Source={x:Reference this}, Path=KeyBoard}"  />

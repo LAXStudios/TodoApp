@@ -7,23 +7,29 @@
              x:DataType="viewmodel:SettingsPageViewModel"
              Shell.NavBarIsVisible="False">
     <Grid RowDefinitions="10*, 90*" BackgroundColor="{StaticResource Tertiary}">
-        <controls:NavigationBarControl Grid.Row="0"/>
+        <controls:NavigationBarControl Grid.Row="0" Title="Einstellungen"/>
         <Grid Grid.Row="1" Padding="10">
             <VerticalStackLayout Spacing="10">
-                <Label Text="Einstellungen" VerticalOptions="Center"  FontAttributes="Bold" FontSize="Title"/>
                 <Border>
                     <Grid Padding="10">
-                        <Label Text="Developer Mode" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <Switch IsToggled="{Binding IsDeveloperMode}" HorizontalOptions="End"/>
+                        <Label Text="Entwickler Modus" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Switch x:Name="mySwitch" IsToggled="{Binding IsDeveloperMode}" HorizontalOptions="End" Toggled="mySwitch_Toggled"/>
                     </Grid>
                 </Border>
                 <Border Stroke="Gray" BackgroundColor="Gray" HeightRequest="1" StrokeShape="RoundRectangle 90"/>
-
-                <!--<Border Padding="10">
-
-                </Border>-->
+                <VerticalStackLayout>
+                    <Border StrokeShape="RoundRectangle 90" StrokeThickness="1" WidthRequest="190" HeightRequest="190" Stroke="Gray" Padding="5">
+                        <Border StrokeShape="RoundRectangle 90" StrokeThickness="0">
+                            <Image Source="laxstudios"/>
+                        </Border>
+                    </Border>
+                    <Label Text="Design und Entwicklung" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center"/>
+                    <Label Text="laxstudios" FontSize="17" HorizontalOptions="Center"/>
+                    <Label Text="Maximilian Peters" FontSize="15" HorizontalOptions="Center"/>
+                    <Label Text="© 2023" FontSize="12" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
             </VerticalStackLayout>
-            <Button x:Name="saveButton" Text="Speichern" FontAttributes="Bold" Command="{Binding SaveCommand}" Margin="0,50,0,0" HeightRequest="45" VerticalOptions="End"/>
+            <Button x:Name="saveButton" IsEnabled="False" Text="Speichern" FontAttributes="Bold" Command="{Binding SaveCommand}" Margin="0,50,0,0" HeightRequest="45" VerticalOptions="End"/>
         </Grid>
     </Grid>
 </ContentPage>
