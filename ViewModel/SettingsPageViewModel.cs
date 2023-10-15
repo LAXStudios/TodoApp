@@ -47,6 +47,27 @@ namespace TodoApp.ViewModel
             return Task.CompletedTask;
         }
 
+        [RelayCommand]
+        async Task AboutPage()
+        {
+            await Shell.Current.GoToAsync(nameof(AboutPage));
+        }
+
+        [RelayCommand]
+        Task ToogledDevSwitch()
+        {
+            if(IsDeveloperMode == true)
+            {
+                IsDeveloperMode = false;
+            }
+            else
+            {
+                IsDeveloperMode = true;
+            }
+
+            return Task.CompletedTask;
+        }
+
         public async Task LoadSettings()
         {
             IsDeveloperMode = await settingsService.Get<bool>(nameof(IsDeveloperMode), false);

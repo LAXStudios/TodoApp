@@ -34,7 +34,7 @@
                 </HorizontalStackLayout>
             </Grid>
         </StackLayout>
-        <BoxView x:Name="divider" BackgroundColor="Gray" HeightRequest="1" CornerRadius="90"/>
+        <Border x:Name="divider" BackgroundColor="Gray" HeightRequest="1" StrokeShape="RoundRectangle 90"/>
         <StackLayout Spacing="5">
             <Border Padding="10,0,10,0">
                 <Picker x:Name="picker" Title="Wähle ein Fach" SelectedItem="{Binding Selected}" TitleColor="{StaticResource Gray300}">
@@ -42,16 +42,19 @@
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Mathe</x:String>
                             <x:String>Deutsch</x:String>
+                            <x:String>Englisch</x:String>
                             <x:String>Französisch</x:String>
+                            <x:String>Spanisch</x:String>
+                            <x:String>Latein</x:String>
                             <x:String>Philosophie</x:String>
                             <x:String>Kunst</x:String>
+                            <x:String>Sport</x:String>
                             <x:String>Informatik</x:String>
-                            <x:String>Englisch</x:String>
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
             </Border>
-            <custom:OutlinedEntryOpenControl x:Name="etyPage" HasContent="False" HeightRequest="50" Placeholder=" Seite " TitleBackgroundColor="{StaticResource Tertiary}" KeyBoard="Numeric"/>
+            <custom:OutlinedEntryOpenControl x:Name="etyPage" HasContent="True" HeightRequest="50" Placeholder=" Seite " TitleBackgroundColor="{StaticResource Tertiary}" KeyBoard="Numeric"/>
             <custom:OutlinedEntryOpenControl x:Name="etyNumber" HasContent="True" HeightRequest="50" Placeholder=" Nummer " TitleBackgroundColor="{StaticResource Tertiary}" KeyBoard="Numeric"/>
             <custom:OutlinedEntryOpenControl x:Name="etyDescription" HeightRequest="50" Placeholder=" Beschreibung " TitleBackgroundColor="{StaticResource Tertiary}"/>
             <Border Grid.Column="1">

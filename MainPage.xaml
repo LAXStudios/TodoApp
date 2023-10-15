@@ -30,17 +30,7 @@
                 <Border Margin="-2,3" Grid.Column="0" Padding="0" BackgroundColor="Transparent" StrokeShape="RoundRectangle 8" StrokeThickness="2" Stroke="{StaticResource Primary}"  HeightRequest="60">
                     <Entry x:Name="entry" Placeholder="Neues Todo" PlaceholderColor="Gray" TextColor="White" Margin="10" BackgroundColor="Transparent"/>
                 </Border>
-                <Button x:Name="btnAdd" Grid.Column="1" Text="Neu" Command="{Binding AddTodoCommand}" CommandParameter="{Binding Source={x:Reference entry}}" FontAttributes="Bold" TextTransform="Uppercase" FontSize="18" HeightRequest="57">
-                    <VisualStateManager.VisualStateGroups>
-                        <VisualStateGroup>
-                            <VisualState x:Name="Pressed">
-                                <VisualState.Setters>
-                                    <Setter TargetName="entry" Property="Entry.BackgroundColor" Value="Lime"/>
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateManager.VisualStateGroups>
-                </Button>
+                <Button x:Name="btnAdd" Grid.Column="1" Text="Neu" Command="{Binding AddTodoCommand}" CommandParameter="{Binding Source={x:Reference entry}}" FontAttributes="Bold" TextTransform="Uppercase" FontSize="18" HeightRequest="57"/>
             </Grid>
             <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
                 <CollectionView Grid.Row="0" Grid.RowSpan="1" ItemsSource="{Binding Todos}" BackgroundColor="#151515" VerticalOptions="StartAndExpand">

@@ -88,7 +88,7 @@ public partial class OutlinedEntryControl : Grid
 
     private void txtEntry_Unfocused(object sender, FocusEventArgs e)
     {
-        if (!string.IsNullOrWhiteSpace(Text) && HasContent)
+        if (!string.IsNullOrWhiteSpace(Text)  || HasContent)
         {
             lblPlaceholder.FontSize = 11;
             lblPlaceholder.TranslateTo(0, -20, 80, easing: Easing.Linear);

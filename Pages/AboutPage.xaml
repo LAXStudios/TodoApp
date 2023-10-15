@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:TodoApp.CustomControls"
+             x:Class="TodoApp.Pages.AboutPage"
+             Shell.NavBarIsVisible="False"
+             Title="AboutPage"
+             BackgroundColor="{StaticResource Tertiary}">
+    <Grid RowDefinitions="10*,90*">
+        <custom:NavigationBarControl Title="Über die App" Grid.Row="0"/>
+        <VerticalStackLayout VerticalOptions="Center" Grid.Row="1">
+            <Border StrokeShape="RoundRectangle 90" StrokeThickness="1" WidthRequest="190" HeightRequest="190" Stroke="Gray" Padding="5">
+                <Border StrokeShape="RoundRectangle 90" StrokeThickness="0">
+                    <Image Source="laxstudios"/>
+                </Border>
+            </Border>
+            <Label Text="Design und Entwicklung" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center"/>
+            <Label Text="laxstudios" FontSize="17" HorizontalOptions="Center"/>
+            <Label Text="Maximilian Peters" FontSize="15" HorizontalOptions="Center"/>
+            <Label Text="© 2023" FontSize="12" HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

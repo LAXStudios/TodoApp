@@ -46,7 +46,7 @@
                 </Grid>
             </StackLayout>
 
-            <Button Command="{Binding AddCommand}" Grid.Row="2" Text="Hinzufügen" VerticalOptions="EndAndExpand" HeightRequest="50" FontAttributes="Bold" FontSize="Title"/>
+            <Button Command="{Binding AddCommand}" Grid.Row="2" Text="Hinzufügen" VerticalOptions="EndAndExpand" HeightRequest="50" FontAttributes="Bold" FontSize="20"/>
         </StackLayout>
     </Grid>
 </ContentPage>

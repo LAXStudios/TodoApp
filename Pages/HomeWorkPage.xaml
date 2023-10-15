@@ -52,6 +52,6 @@
                 </CollectionView>
             </RefreshView>
         </StackLayout>
-        <Button Command="{Binding NewCommand}" Margin="10" Text="Neu" VerticalOptions="EndAndExpand" FontAttributes="Bold" FontSize="18"/>
+        <Button Command="{Binding NewCommand}" Margin="0 , 0, 0 ,30" Text="Neu" VerticalOptions="EndAndExpand" FontAttributes="Bold" FontSize="18"/>
     </Grid>
 </ContentPage>

@@ -10,24 +10,32 @@
         <controls:NavigationBarControl Grid.Row="0" Title="Einstellungen"/>
         <Grid Grid.Row="1" Padding="10">
             <VerticalStackLayout Spacing="10">
-                <Border>
+                <!--Dev Mode-->
+                <Border Stroke="{StaticResource Gray600}">
+                    <Border.Triggers>
+                        <DataTrigger TargetType="Border"  Binding="{Binding Source={x:Reference mySwitch},Path=IsToggled}" Value="True">
+                            <Setter Property="Stroke" Value="{StaticResource Primary}" />
+                        </DataTrigger>
+                    </Border.Triggers>
                     <Grid Padding="10">
-                        <Label Text="Entwickler Modus" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ToogledDevSwitchCommand}"/>
+                        </Grid.GestureRecognizers>
+                        <Label Text="Entwickler Modus" HorizontalOptions="Start" VerticalOptions="Center" FontSize="18" Margin="15, 0, 0, 0"/>
                         <Switch x:Name="mySwitch" IsToggled="{Binding IsDeveloperMode}" HorizontalOptions="End" Toggled="mySwitch_Toggled"/>
                     </Grid>
                 </Border>
                 <Border Stroke="Gray" BackgroundColor="Gray" HeightRequest="1" StrokeShape="RoundRectangle 90"/>
-                <VerticalStackLayout>
-                    <Border StrokeShape="RoundRectangle 90" StrokeThickness="1" WidthRequest="190" HeightRequest="190" Stroke="Gray" Padding="5">
-                        <Border StrokeShape="RoundRectangle 90" StrokeThickness="0">
-                            <Image Source="laxstudios"/>
-                        </Border>
-                    </Border>
-                    <Label Text="Design und Entwicklung" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center"/>
-                    <Label Text="laxstudios" FontSize="17" HorizontalOptions="Center"/>
-                    <Label Text="Maximilian Peters" FontSize="15" HorizontalOptions="Center"/>
-                    <Label Text="© 2023" FontSize="12" HorizontalOptions="Center"/>
-                </VerticalStackLayout>
+                <!--About-->
+                <Border Stroke="{StaticResource Gray600}">
+                    <Grid Padding="10">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AboutPageCommand}"/>
+                        </Grid.GestureRecognizers>
+                        <Label Text="Über die App" HorizontalOptions="Start" VerticalOptions="Center" FontSize="18" Margin="15, 0, 0, 0"/>
+                        <Image Source="back.svg" HorizontalOptions="End" Rotation="180" HeightRequest="50"/>
+                    </Grid>
+                </Border>
             </VerticalStackLayout>
             <Button x:Name="saveButton" IsEnabled="False" Text="Speichern" FontAttributes="Bold" Command="{Binding SaveCommand}" Margin="0,50,0,0" HeightRequest="45" VerticalOptions="End"/>
         </Grid>
