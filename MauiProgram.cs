@@ -16,14 +16,15 @@ public static class MauiProgram
 			.UseMauiApp<App>()
 			.UseMauiCommunityToolkit()
 			.ConfigureMopups()
-			.UseBottomSheet() 
+			.UseBottomSheet()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			}).ConfigureLifecycleEvents(events =>
+			}); /*.ConfigureLifecycleEvents(events =>
             {
 #if ANDROID
+				
                 events.AddAndroid(android => android.OnCreate((activity, bundle) => MakeStatusBarTranslucent(activity)));
 
                 static void MakeStatusBarTranslucent(Android.App.Activity activity)
@@ -34,8 +35,9 @@ public static class MauiProgram
 
                     activity.Window.SetStatusBarColor(Android.Graphics.Color.Transparent);
                 }
+				
 #endif
-            });
+            });*/
 
 		
 #if DEBUG

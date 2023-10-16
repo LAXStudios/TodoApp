@@ -59,6 +59,7 @@
 	  <None Remove="Resources\Images\laxstudios.png" />
 	  <None Remove="Resources\Images\settings.svg" />
 	  <None Remove="Resources\Images\todo.svg" />
+	  <None Remove="Resources\Images\trash.svg" />
 	</ItemGroup>
 
 	<ItemGroup>

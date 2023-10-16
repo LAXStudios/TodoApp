@@ -88,10 +88,12 @@ namespace TodoApp.ViewModel
         }
 
         [RelayCommand]
-        async Task Details(HomeWork homeWork)
+        Task Details(HomeWork homeWork)
         {
             HomeWorkDetailsBottomSheetViewModel vm = new();
             vm.Give(homeWork);
+
+            return Task.CompletedTask;
         }
     }
 }

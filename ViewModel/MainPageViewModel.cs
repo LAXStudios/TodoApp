@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui;
+using Microsoft.Maui.Animations;
 
 namespace TodoApp.ViewModel
 {
@@ -19,7 +20,7 @@ namespace TodoApp.ViewModel
         List<Todo> todos;
 
         [ObservableProperty]
-        List<Todo> deleteList;
+        ObservableCollection<Todo> cacheList;
 
         private readonly ILiteDBService liteDB;
 
@@ -28,17 +29,18 @@ namespace TodoApp.ViewModel
         public MainPageViewModel(ILiteDBService liteDB, ISettingsService settingsService)
         {
             Todos = new List<Todo>();
+            cacheList = new ObservableCollection<Todo>();
             this.liteDB = liteDB;
             this.settingsService = settingsService;
 
-            Label = "Pre Alpha | laxstudios";
+            Labels = "Pre Alpha | laxstudios";
         }
 
         [ObservableProperty]
         bool showEntry = false;
 
         [ObservableProperty]
-        string label;
+        string labels;
 
         [ObservableProperty]
         bool isRefreshing = false;
@@ -51,7 +53,7 @@ namespace TodoApp.ViewModel
 
         string title
         {
-            get { return Todos.Count > 1 ? "Todos" : "Todo"; }
+            get { return Todos.Count() > 1 ? "Todos" : "Todo"; }
         }
 
         public async Task LoadData()
@@ -71,7 +73,12 @@ namespace TodoApp.ViewModel
         [RelayCommand]
         async Task UpdateBool(Todo todo)
         {
-            await liteDB.Update(todo);
+            //await liteDB.Update(todo);
+
+            CacheList.Add(todo);
+            await liteDB.Delete(todo.Id);
+
+
             await LoadData();
         }
 
@@ -120,6 +127,14 @@ namespace TodoApp.ViewModel
         }
 
         [RelayCommand]
+        Task DeleteCacheList()
+        {
+            CacheList.Clear();
+
+            return Task.CompletedTask;
+        }
+
+        [RelayCommand]
         async Task LongPress(Entry input)
         {
 
@@ -128,7 +143,7 @@ namespace TodoApp.ViewModel
         [RelayCommand]
         public async Task CreateUnderList()
         {
-            Label = "Double";
+            Labels = "Double";
         }
     }
 }
