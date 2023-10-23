@@ -78,7 +78,7 @@ namespace TodoApp.ViewModel
             CacheList.Add(todo);
             await liteDB.Delete(todo.Id);
 
-
+            Labels = nameof(UpdateBoolCommand);
             await LoadData();
         }
 
@@ -134,16 +134,14 @@ namespace TodoApp.ViewModel
             return Task.CompletedTask;
         }
 
-        [RelayCommand]
-        async Task LongPress(Entry input)
+        public async Task SaveCollection()
         {
-
-        }
-
-        [RelayCommand]
-        public async Task CreateUnderList()
-        {
-            Labels = "Double";
+            foreach (var item in Todos)
+            {
+                await liteDB.Delete(item.Id);
+                await liteDB.Save(item);
+            }
+            await LoadData();
         }
     }
 }

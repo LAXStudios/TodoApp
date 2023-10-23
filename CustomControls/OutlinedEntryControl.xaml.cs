@@ -43,7 +43,11 @@ public partial class OutlinedEntryControl : Grid
     public bool HasContent
     {
         get => (bool)GetValue(HasContentProperty);
-        set { SetValue(HasContentProperty, value); }
+        set 
+        { 
+            SetValue(HasContentProperty, value); 
+            OnPropertyChanged(nameof(HasContent));
+        }
     }
 
     public string Text

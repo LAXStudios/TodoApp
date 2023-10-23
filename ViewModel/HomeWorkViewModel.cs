@@ -50,13 +50,13 @@ namespace TodoApp.ViewModel
             {
                 string page = string.Empty;
                 string number = string.Empty;
-                if(item.HomeWorkPage != null)
+                if(item.HomeWorkPage != null && item.HomeWorkNumber != null)
                 {
                     page = $"S.{item.HomeWorkPage}";
-                }
-                if(item.HomeWorkNumber != null)
-                {
                     number = $"Nr.{item.HomeWorkNumber}";
+                }else
+                {
+                    item.Combine = item.Description;
                 }
                 //string page = item.HomeWorkPage == string.Empty ? string.Empty : $"S. {item.HomeWorkPage}";
                 //string number = item.HomeWorkNumber == string.Empty ? string.Empty : $"Nr. {item.HomeWorkNumber}";
@@ -66,15 +66,8 @@ namespace TodoApp.ViewModel
                 }
                 else
                 {
-                    item.Combine = number;
+                    //item.Combine = item.Description;
                 }
-
-                // Funktioniert zwar, solle man aber besser in die Erstellung Methode packen
-                /*
-                DateTime dt = new DateTime();
-                dt = Convert.ToDateTime(item.HomeWorkDate);
-                item.HomeWorkDate = Convert.ToString($"{dt.Day}.{dt.Month}.{dt.Year}");
-                */
             }
             HomeWorkList = resuslt;
         }

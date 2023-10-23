@@ -23,8 +23,8 @@ public partial class NavigationBarControl : Grid
 		InitializeComponent();
 	}
 
-    private async void ImageButton_Clicked(object sender, EventArgs e)
+    private void ImageButton_Clicked(object sender, EventArgs e)
     {
-		await Shell.Current.GoToAsync("..");
+        Shell.Current.GoToAsync("..");
     }
 }

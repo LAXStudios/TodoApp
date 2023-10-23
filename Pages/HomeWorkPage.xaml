@@ -22,8 +22,7 @@
                                     </Frame.GestureRecognizers>
                                     <Grid ColumnDefinitions="70*, 30*" Padding="0">
                                         <StackLayout Grid.Column="0" Orientation="Horizontal" Padding="18">
-                                            <CheckBox IsChecked="{Binding IsDone, Mode=TwoWay}"
-                                        Color="White" x:Name="checkBox" />
+                                            <CheckBox IsChecked="{Binding IsDone, Mode=TwoWay}" Color="White" x:Name="checkBox" />
                                             <StackLayout Margin="0, 0, 0, 0">
                                                 <StackLayout.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=DetailCommand}" CommandParameter="{Binding .}"/>
@@ -33,17 +32,17 @@
                                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=DetailsCommand}" CommandParameter="{Binding .}"/>
                                                     </Label.GestureRecognizers>
                                                 </Label>
-                                                <Label Text="{Binding DisplayDate, StringFormat='Bis zum: {0}'}" FontSize="10" TextColor="{StaticResource Gray300}"/>
+                                                <Label Text="{Binding DisplayDate, StringFormat='{0}'}" FontSize="10" TextColor="{StaticResource Gray300}"/>
                                                 <StackLayout Orientation="Horizontal" Spacing="8">
                                                     <Label Text="{Binding Combine}" FontSize="10" TextColor="{StaticResource Gray300}"/>
                                                 </StackLayout>
                                             </StackLayout>
                                         </StackLayout>
                                         <Button Grid.Column="1" x:Name="btnDelete" Text="Enternen" TextColor="White" BackgroundColor="{StaticResource Green}"  MinimumWidthRequest="150"
-                                    IsVisible="{Binding IsChecked, Source={x:Reference checkBox}}"
-                                    CornerRadius="0" HorizontalOptions="EndAndExpand"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=DeleteCommand}"
-                                    CommandParameter="{Binding .}"/>
+                                                IsVisible="{Binding IsChecked, Source={x:Reference checkBox}}"
+                                                CornerRadius="0" HorizontalOptions="EndAndExpand"
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=DeleteCommand}"
+                                                CommandParameter="{Binding .}"/>
                                     </Grid>
                                 </Frame>
                             </StackLayout>

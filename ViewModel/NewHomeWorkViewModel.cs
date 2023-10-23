@@ -37,8 +37,38 @@ namespace TodoApp.ViewModel
         async Task Add()
         {
             DateTime dt = new();
+
+            string dayString = null;
+
             dt = CurrentDate;
-            string newCurrentDate = Convert.ToString($"{dt.Day}.{(dt.Month <= 9 ? "0" + dt.Month : dt.Month)}.{dt.Year}");
+
+            switch (dt.DayOfWeek)
+            {
+                case DayOfWeek.Monday:
+                    dayString = "Mo";
+                    break;
+                case DayOfWeek.Tuesday:
+                    dayString = "Di";
+                    break;
+                case DayOfWeek.Wednesday:
+                    dayString = "Mi";
+                    break;
+                case DayOfWeek.Thursday:
+                    dayString = "Do";
+                    break;
+                case DayOfWeek.Friday:
+                    dayString = "Fr";
+                    break;
+                case DayOfWeek.Saturday:
+                    dayString = "Sa";
+                    break;
+                case DayOfWeek.Sunday:
+                    dayString = "So";
+                    break;
+            }
+
+            string newCurrentDate = Convert.ToString($"Bis {dayString} den: {dt.Day}.{(dt.Month <= 9 ? "0" + dt.Month : dt.Month)}.{dt.Year}");
+
             if (string.IsNullOrWhiteSpace(Selected) || string.IsNullOrEmpty(Selected))
             {
                 var toast = Toast.Make("Kein Fach Gewählt", CommunityToolkit.Maui.Core.ToastDuration.Short, 15);

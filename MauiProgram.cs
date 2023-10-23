@@ -50,8 +50,8 @@ public static class MauiProgram
 		builder.Services.AddSingleton<HomeWorkPage>();
 		builder.Services.AddSingleton<HomeWorkViewModel>();
 
-		builder.Services.AddSingleton<NewHomeWorkPage>();
-		builder.Services.AddSingleton<NewHomeWorkViewModel>();
+		builder.Services.AddTransient<NewHomeWorkPage>();
+		builder.Services.AddTransient<NewHomeWorkViewModel>();
 
 		builder.Services.AddSingleton<DetailHomeWorkPopUp>();
 		builder.Services.AddSingleton<DetailsPopUpViewModel>();

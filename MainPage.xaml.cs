@@ -1,4 +1,6 @@
-﻿namespace TodoApp;
+﻿using Microsoft.Maui.Controls;
+
+namespace TodoApp;
 
 public partial class MainPage : ContentPage
 {
@@ -20,6 +22,11 @@ public partial class MainPage : ContentPage
         base.OnAppearing();
 
         MainThread.BeginInvokeOnMainThread(async () => await mainPageVM.LoadData());
+    }
+
+    private async void CollectionView_ChildrenReordered(object sender, EventArgs e)
+    {
+        await mainPageVM.SaveCollection();
     }
 }
 

@@ -5,9 +5,10 @@
              xmlns:viewmodel="clr-namespace:TodoApp.ViewModel"
              xmlns:custom="clr-namespace:TodoApp.CustomControls"
              xmlns:converter="clr-namespace:TodoApp.Converter"
-             xmlns:toolkit="clr-namespace:CommunityToolkit.Maui;assembly=CommunityToolkit.Maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="TodoApp.MainPage"
              x:DataType="viewmodel:MainPageViewModel"
+             x:Name="this"
              Title="Todos" BackgroundColor="{StaticResource Tertiary}" Shell.NavBarIsVisible="False">
 
     <ContentPage.Resources>
@@ -16,7 +17,7 @@
 
     <!--xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"-->
     <!--toolkit:SetFocusOnEntryCompletedBehavior.NextElement="{x:Reference btnAdd}"-->
-    <Grid Padding="10" RowDefinitions="40*, 60*">
+    <Grid Padding="10" RowDefinitions="35*, 65*">
         <StackLayout Grid.Row="0" BackgroundColor="#151515" x:Name="stacklayout">
             <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding UnFocusCommand}" CommandParameter="{Binding Source={x:Reference stacklayout}}"/>
@@ -36,7 +37,7 @@
         <RefreshView Grid.Row="1" Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}" BackgroundColor="{StaticResource Secondary}">
             <ScrollView>
                 <StackLayout Spacing="5">
-                    <CollectionView ItemsSource="{Binding Todos}" BackgroundColor="#151515">
+                   <CollectionView ItemsSource="{Binding Todos}" BackgroundColor="#151515" CanReorderItems="True" ReorderCompleted="CollectionView_ChildrenReordered">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="model:Todo">
                                 <StackLayout Padding="6">
@@ -47,15 +48,17 @@
                                         </Frame.GestureRecognizers>
                                         <StackLayout Orientation="Horizontal" Padding="0">
                                             <StackLayout Orientation="Horizontal" Padding="18">
-                                                <CheckBox IsChecked="{Binding IsDone, Mode=TwoWay}" Color="White" x:Name="checkBox" />
+                                                <CheckBox IsChecked="{Binding IsDone, Mode=TwoWay}" Color="White" x:Name="checkBox">
+                                                    <!--<CheckBox.Behaviors>
+                                                        <toolkit:EventToCommandBehavior
+                                                            EventName="CheckedChanged"
+                                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=UpdateBoolCommand}"
+                                                            CommandParameter="{Binding .}"/>
+                                                    </CheckBox.Behaviors>-->
+                                                </CheckBox>
                                                 <Label Text="{Binding Title}" TextColor="White" VerticalTextAlignment="Center">
                                                 </Label>
                                             </StackLayout>
-                                            <Button x:Name="btnDelete" Text="Entfernen" TextColor="White" BackgroundColor="{StaticResource Green}" BorderWidth="0" FontAttributes="Bold"
-                                                        IsVisible="{Binding IsChecked, Source={x:Reference checkBox}}"
-                                                        CornerRadius="0" HorizontalOptions="EndAndExpand"
-                                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=DeleteCommand}"
-                                                        CommandParameter="{Binding .}"/>
                                         </StackLayout>
                                     </Frame>
                                 </StackLayout>
@@ -64,11 +67,9 @@
                     </CollectionView>
 
                     <!--Finished-->
-                    <Grid ColumnDefinitions="90*, 10*" Margin="7, 0">
-                        <Border Grid.Column="0" Stroke="Gray" BackgroundColor="Gray" StrokeThickness="1" HorizontalOptions="FillAndExpand" HeightRequest="1" StrokeShape="RoundRectangle 90"/>
-                        <ImageButton Command="{Binding DeleteCacheListCommand}" Grid.Column="1" Source="trash.svg" HeightRequest="25" WidthRequest="25" HorizontalOptions="EndAndExpand"/>
-                    </Grid>
-                    <StackLayout BindableLayout.ItemsSource="{Binding CacheList}" BackgroundColor="#151515" >
+                    <Border Grid.Row="0" Stroke="Gray" Margin="7, 0, 7, 0" BackgroundColor="Gray" StrokeThickness="1" HorizontalOptions="FillAndExpand" HeightRequest="1" StrokeShape="RoundRectangle 90"/>
+
+                    <StackLayout Grid.Row="1" BindableLayout.ItemsSource="{Binding CacheList}" BackgroundColor="#151515" >
                         <BindableLayout.ItemTemplate>
                             <DataTemplate x:DataType="model:Todo">
                                 <StackLayout Padding="6">
@@ -84,6 +85,7 @@
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </StackLayout>
+
                 </StackLayout>
                 
             </ScrollView>
