@@ -100,6 +100,9 @@
 	  <MauiXaml Update="Pages\LifeManagerPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\LongTodoCreatePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\NewHomeWorkPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

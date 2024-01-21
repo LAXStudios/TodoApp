@@ -23,7 +23,7 @@ public partial class OutlinedEntryControl : Grid
         propertyName: nameof(TitleBackgroundColor),
         returnType: typeof(Color),
         declaringType: typeof(OutlinedEntryControl),
-        defaultValue: Colors.Transparent,
+        defaultValue: Microsoft.Maui.Graphics.Colors.Transparent,
         defaultBindingMode: BindingMode.TwoWay);
 
     public static readonly BindableProperty KeyBoardProperty = BindableProperty.Create(

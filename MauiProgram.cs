@@ -68,6 +68,9 @@ public static class MauiProgram
 		builder.Services.AddSingleton<SettingsPage>();
 		builder.Services.AddSingleton<SettingsPageViewModel>();
 
+		builder.Services.AddSingleton<LongTodoCreatePage>();
+		builder.Services.AddSingleton<LongTodoCreateViewModel>();
+
 
 		builder.Services.AddSingleton<ILiteDBService, LiteDBService>();
 		builder.Services.AddSingleton<IHomeWorkService, HomeWorkService>();

@@ -51,9 +51,17 @@ namespace TodoApp.ViewModel
         [ObservableProperty]
         bool isDeveloperMode;
 
+        [ObservableProperty]
+        bool isFinishedVisibleBool;
+
         string title
         {
             get { return Todos.Count() > 1 ? "Todos" : "Todo"; }
+        }
+
+        bool isFinishedVisible
+        {
+            get { return CacheList.Count > 0 ? true : false; }
         }
 
         public async Task LoadData()
@@ -61,6 +69,7 @@ namespace TodoApp.ViewModel
             List<Todo> result = await liteDB.GetAll();
             Todos = result;
             TitleLabel = title;
+            IsFinishedVisibleBool = isFinishedVisible;
             IsDeveloperMode = await settingsService.Get<bool>(nameof(IsDeveloperMode), false);
         }
 
@@ -95,6 +104,12 @@ namespace TodoApp.ViewModel
             IsRefreshing = true;
             await LoadData();
             IsRefreshing = false;
+        }
+
+        [RelayCommand]
+        async Task LongTodoCreate()
+        {
+            await Shell.Current.GoToAsync(nameof(LongTodoCreatePage));
         }
 
         [RelayCommand]

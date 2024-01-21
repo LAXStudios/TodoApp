@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using TodoApp.Model;
+
 namespace TodoApp.Model
 {
     public class Todo
@@ -14,5 +16,6 @@ namespace TodoApp.Model
         public string Title { get; set; }
         public bool IsDone { get; set; }
         public bool? UnderList { get; set; }
+        public ExtendedTodoModel ExtendedTodo { get; set; }
     }
 }

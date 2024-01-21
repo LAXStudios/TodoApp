@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:TodoApp.CustomControls"
+             x:Class="TodoApp.Pages.LongTodoCreatePage"
+             Title="LongTodoCreatePage"
+             BackgroundColor="{StaticResource Tertiary}"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False">
+    <Grid RowDefinitions="10*, 90*">
+        <controls:NavigationBarControl Grid.Row="0" Title="Todo"/>
+        <Grid Grid.Row="1" Padding="10" RowDefinitions="10*, 70*, 10*, 10*" RowSpacing="10">
+            <Border Grid.Row="0" StrokeShape="RoundRectangle 12" Stroke="{StaticResource Primary}" Padding="10, 5, 5, 10">
+                <Entry Placeholder="Title" VerticalOptions="Center" TextColor="White"/>
+            </Border>
+            <Border Grid.Row="1" StrokeShape="RoundRectangle 12" Stroke="{StaticResource Primary}" Padding="10, 5, 5, 10">
+                <StackLayout>
+                    <Editor Placeholder="Text..." VerticalOptions="StartAndExpand" HeightRequest="600" TextColor="White" MaxLength="1000"/>
+                </StackLayout>
+            </Border>
+            <Grid Grid.Row="2" ColumnSpacing="10" ColumnDefinitions="20*, 20*, 20*, 20*, 20*">
+                <ImageButton Grid.Column="0" BackgroundColor="#53DFDD" CornerRadius="12"/>
+                <ImageButton Grid.Column="1" BackgroundColor="#A882FF" CornerRadius="12"/>
+                <ImageButton Grid.Column="2" BackgroundColor="#E0DE71" CornerRadius="12"/>
+                <ImageButton Grid.Column="3" BackgroundColor="#44CF6E" CornerRadius="12"/>
+                <ImageButton Grid.Column="4" BackgroundColor="#E9973F" CornerRadius="12"/>
+            </Grid>
+            <Button CornerRadius="12" Grid.Row="3" Text="Add" TextTransform="Uppercase" FontAttributes="Bold" BackgroundColor="{StaticResource Primary}"/>
+        </Grid>
+    </Grid>
+</ContentPage>
