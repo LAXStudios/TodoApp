@@ -7,7 +7,7 @@
              Title="Hausaufgaben"
              x:DataType="viewmodel:HomeWorkViewModel" Shell.NavBarIsVisible="False">
     <Grid Padding="10" Style="{DynamicResource 15Stack}" IgnoreSafeArea="{OnPlatform Android=true, iOS=true}">
-        <StackLayout>
+        <StackLayout Spacing="5">
             <StackLayout HeightRequest="175">
                 <Label Text="Hausaufgaben" FontSize="32" VerticalOptions="CenterAndExpand" Padding="10, 0, 0, 0"/>
             </StackLayout>
@@ -22,7 +22,7 @@
                                     </Frame.GestureRecognizers>
                                     <Grid ColumnDefinitions="70*, 30*" Padding="0">
                                         <StackLayout Grid.Column="0" Orientation="Horizontal" Padding="18">
-                                            <CheckBox IsChecked="{Binding IsDone, Mode=TwoWay}" Color="White" x:Name="checkBox" />
+                                            <CheckBox IsChecked="{Binding IsDone, Mode=TwoWay}" Color="White" x:Name="checkBox"/>
                                             <StackLayout Margin="0, 0, 0, 0">
                                                 <StackLayout.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeWorkViewModel}}, Path=DetailCommand}" CommandParameter="{Binding .}"/>
@@ -50,7 +50,7 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </RefreshView>
+            <Button Command="{Binding NewCommand}" Text="Neu" FontAttributes="Bold" FontSize="18"/>
         </StackLayout>
-        <Button Command="{Binding NewCommand}" Margin="0 , 0, 0 ,30" Text="Neu" VerticalOptions="EndAndExpand" FontAttributes="Bold" FontSize="18"/>
     </Grid>
 </ContentPage>

@@ -6,6 +6,15 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new AppShell();
+		if (VersionTracking.IsFirstLaunchForCurrentVersion)
+		{
+            MainPage = new AppShell();
+		}
+		else
+		{
+			MainPage = new AppShell();
+		}
+
+		
 	}
 }
