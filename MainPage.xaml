@@ -23,15 +23,15 @@
                 <TapGestureRecognizer Command="{Binding UnFocusCommand}" CommandParameter="{Binding Source={x:Reference stacklayout}}"/>
             </StackLayout.GestureRecognizers>
             <StackLayout HeightRequest="175" Orientation="Horizontal" Padding="10, 0, 10, 0">
-                <Label Text="{Binding TitleLabel}" FontSize="32" VerticalOptions="CenterAndExpand"/>
+                <Label Text="{Binding TitleLabel}" FontAttributes="Bold" FontSize="32" VerticalOptions="CenterAndExpand"/>
                 <ImageButton Source="settings.svg" HeightRequest="40" WidthRequest="40" HorizontalOptions="EndAndExpand" Command="{Binding SettingsCommand}"/>
             </StackLayout>
             <Grid ColumnDefinitions="70*, 30*" Padding="7" ColumnSpacing="5" HeightRequest="80">
                 <!--<custom:OutlinedEntryControl Placeholder="Todo"/>-->
                 <Border Margin="-2,3" Grid.Column="0" Padding="0" BackgroundColor="Transparent" StrokeShape="RoundRectangle 8" StrokeThickness="2" Stroke="{StaticResource Primary}"  HeightRequest="60">
-                    <Entry x:Name="entry" Placeholder="Neues Todo" PlaceholderColor="Gray" TextColor="White" Margin="10" BackgroundColor="Transparent"/>
+                    <Entry x:Name="entry" Text="{Binding TodoTitle}" VerticalTextAlignment="Center" VerticalOptions="Center" Placeholder="Neues Todo" FontAttributes="Bold" FontSize="16" PlaceholderColor="Gray" Margin="10, 0, 0, 0" TextColor="White" BackgroundColor="Transparent"/>
                 </Border>
-                <Button x:Name="btnAdd" Grid.Column="1" Text="Neu" FontAttributes="Bold" TextTransform="Uppercase" FontSize="18" HeightRequest="57">
+                <Button Background="{StaticResource Primary}" x:Name="btnAdd" Grid.Column="1" Text="Neu" FontAttributes="Bold" TextTransform="Uppercase" FontSize="18" HeightRequest="57">
                     <Button.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding LongTodoCreateCommand}" NumberOfTapsRequired="2"/>
                         <TapGestureRecognizer Command="{Binding AddTodoCommand}" CommandParameter="{Binding Source={x:Reference entry}}" NumberOfTapsRequired="1"/>
@@ -42,29 +42,20 @@
         <RefreshView Grid.Row="1" Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}" BackgroundColor="{StaticResource Secondary}">
             <ScrollView>
                 <StackLayout Spacing="5">
-                   <CollectionView ItemsSource="{Binding Todos}" BackgroundColor="#151515" CanReorderItems="True" ReorderCompleted="CollectionView_ChildrenReordered">
+                    <CollectionView ItemsSource="{Binding Todos}" BackgroundColor="#151515" CanReorderItems="True" ReorderCompleted="CollectionView_ChildrenReordered">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="model:Todo">
                                 <StackLayout Padding="6">
-                                    <Frame x:Name="frame" BackgroundColor="#222222" CornerRadius="12" BorderColor="#222222" Padding="0">
+                                    <Frame x:Name="frame" BackgroundColor="{StaticResource Secondary}" CornerRadius="12" BorderColor="#222222" Padding="0">
                                         <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=FrameCommand}" CommandParameter="{Binding Source={x:Reference checkBox}}"/>
+                                            <!--<TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=FrameCommand}" CommandParameter="{Binding Source={x:Reference checkBox}}"/>-->
                                             <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=UpdateBoolCommand}" CommandParameter="{Binding .}"/>
                                         </Frame.GestureRecognizers>
-                                        <StackLayout Orientation="Horizontal" Padding="0">
-                                            <StackLayout Orientation="Horizontal" Padding="18">
-                                                <CheckBox IsChecked="{Binding IsDone, Mode=TwoWay}" Color="White" x:Name="checkBox">
-                                                    <!--<CheckBox.Behaviors>
-                                                        <toolkit:EventToCommandBehavior
-                                                            EventName="CheckedChanged"
-                                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=UpdateBoolCommand}"
-                                                            CommandParameter="{Binding .}"/>
-                                                    </CheckBox.Behaviors>-->
-                                                </CheckBox>
-                                                <Label Text="{Binding Title}" TextColor="White" VerticalTextAlignment="Center">
-                                                </Label>
-                                            </StackLayout>
-                                        </StackLayout>
+                                        <Grid ColumnDefinitions="10*, 70*, 20*" Padding="18">
+                                            <Image Grid.Column="0" Source="check.svg" HeightRequest="15" WidthRequest="15" VerticalOptions="CenterAndExpand"/>
+                                            <Label Grid.Column="1" Text="{Binding Title}" TextColor="White" VerticalOptions="CenterAndExpand"/>
+                                            <Image Grid.Column="2" Source="sheet.svg" WidthRequest="20" HeightRequest="20" IsVisible="{Binding IsExtendedTodo}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        </Grid>
                                     </Frame>
                                 </StackLayout>
                             </DataTemplate>
@@ -79,20 +70,17 @@
                             <DataTemplate x:DataType="model:Todo">
                                 <StackLayout Padding="6">
                                     <Frame x:Name="frame" BackgroundColor="#222222" CornerRadius="12" BorderColor="#222222" Padding="0">
-                                        <StackLayout Orientation="Horizontal" Padding="0">
-                                            <StackLayout Orientation="Horizontal" Padding="18">
-                                                <CheckBox IsChecked="True" Color="White" x:Name="checkBox" IsEnabled="False"/>
-                                                <Label Text="{Binding Title}" TextColor="White" VerticalTextAlignment="Center"/>
-                                            </StackLayout>
-                                        </StackLayout>
+                                        <Grid ColumnDefinitions="10*, 70*, 20*" Padding="18">
+                                            <Image Grid.Column="0" Source="checked.svg" HeightRequest="15" WidthRequest="15" VerticalOptions="CenterAndExpand"/>
+                                            <Label Grid.Column="1" Text="{Binding Title}" TextColor="White" VerticalOptions="CenterAndExpand"/>
+                                            <Image Grid.Column="2" Source="sheet.svg" WidthRequest="20" HeightRequest="20" IsVisible="{Binding IsExtendedTodo}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        </Grid>
                                     </Frame>
                                 </StackLayout>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </StackLayout>
-
                 </StackLayout>
-                
             </ScrollView>
         </RefreshView>
         <Label Text="{Binding Labels}" IsVisible="{Binding IsDeveloperMode}" Grid.Row="1" Opacity="50" VerticalOptions="EndAndExpand"/>

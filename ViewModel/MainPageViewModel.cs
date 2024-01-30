@@ -33,6 +33,8 @@ namespace TodoApp.ViewModel
             this.liteDB = liteDB;
             this.settingsService = settingsService;
 
+            TodoTitle = string.Empty;
+
             Labels = "Pre Alpha | laxstudios";
         }
 
@@ -54,6 +56,9 @@ namespace TodoApp.ViewModel
         [ObservableProperty]
         bool isFinishedVisibleBool;
 
+        [ObservableProperty]
+        string todoTitle;
+
         string title
         {
             get { return Todos.Count() > 1 ? "Todos" : "Todo"; }
@@ -66,11 +71,18 @@ namespace TodoApp.ViewModel
 
         public async Task LoadData()
         {
-            List<Todo> result = await liteDB.GetAll();
-            Todos = result;
-            TitleLabel = title;
-            IsFinishedVisibleBool = isFinishedVisible;
-            IsDeveloperMode = await settingsService.Get<bool>(nameof(IsDeveloperMode), false);
+            try
+            {
+                List<Todo> result = await liteDB.GetAll();
+                Todos = result;
+                TitleLabel = title;
+                IsFinishedVisibleBool = isFinishedVisible;
+                IsDeveloperMode = await settingsService.Get<bool>(nameof(IsDeveloperMode), false);
+            } catch (Exception ex)
+            {
+
+            }
+
         }
 
         [RelayCommand]
@@ -109,7 +121,9 @@ namespace TodoApp.ViewModel
         [RelayCommand]
         async Task LongTodoCreate()
         {
-            await Shell.Current.GoToAsync(nameof(LongTodoCreatePage));
+
+            var navigationParameter = new Dictionary<string, object> { ["TodoTitle"] = TodoTitle };
+            await Shell.Current.GoToAsync($"{nameof(LongTodoCreatePage)}", navigationParameter);
         }
 
         [RelayCommand]
@@ -125,7 +139,8 @@ namespace TodoApp.ViewModel
             var todo = new Todo()
             {
                 Title = input.Text,
-                IsDone = false
+                IsDone = false,
+                IsExtendedTodo = false,
             };
             await liteDB.Save(todo);
             await LoadData();

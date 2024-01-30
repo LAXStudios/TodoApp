@@ -16,6 +16,7 @@ namespace TodoApp.Model
         public string Title { get; set; }
         public bool IsDone { get; set; }
         public bool? UnderList { get; set; }
+        public bool? IsExtendedTodo { get; set; }
         public ExtendedTodoModel ExtendedTodo { get; set; }
     }
 }

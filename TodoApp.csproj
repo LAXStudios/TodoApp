@@ -55,9 +55,13 @@
 	  <None Remove="Resources\Images\back.svg" />
 	  <None Remove="Resources\Images\Book.svg" />
 	  <None Remove="Resources\Images\calendar.svg" />
+	  <None Remove="Resources\Images\check.svg" />
+	  <None Remove="Resources\Images\checked.svg" />
+	  <None Remove="Resources\Images\check_white.svg" />
 	  <None Remove="Resources\Images\cross.svg" />
 	  <None Remove="Resources\Images\laxstudios.png" />
 	  <None Remove="Resources\Images\settings.svg" />
+	  <None Remove="Resources\Images\sheet.svg" />
 	  <None Remove="Resources\Images\todo.svg" />
 	  <None Remove="Resources\Images\trash.svg" />
 	</ItemGroup>

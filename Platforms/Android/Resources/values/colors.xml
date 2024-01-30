@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3498DB</color>
     <color name="colorPrimaryDark">#151515</color>
     <color name="colorAccent">#3498DB</color>
+
+	<style name="SplashTheme" parent="@style/Maui.SplashTheme">
+		<item name="android:statusBarColor">#151515</item>
+		<item name="android:navigationBarColor">#151515</item>
+	</style>
 </resources>

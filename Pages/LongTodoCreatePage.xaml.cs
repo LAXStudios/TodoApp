@@ -2,8 +2,11 @@ namespace TodoApp.Pages;
 
 public partial class LongTodoCreatePage : ContentPage
 {
-	public LongTodoCreatePage()
+	public LongTodoCreateViewModel viewModel { get; set; }
+	public LongTodoCreatePage(LongTodoCreateViewModel viewModel)
 	{
 		InitializeComponent();
+		this.viewModel = viewModel;
+		this.BindingContext = viewModel;
 	}
 }
